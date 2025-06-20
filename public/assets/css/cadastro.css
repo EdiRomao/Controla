@@ -1,0 +1,53 @@
+body {
+    background-image: url('../img/fundo_login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  .cadastro-card {
+    background-color: #212529;
+    color: white;
+    border-radius: 1rem;
+    max-width: 650px;
+    width: 100%;
+    padding: 2rem;
+  }
+  .notification {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: 90%;
+    max-width: 400px;
+  }
+  .input-group-text {
+    background-color: #212529;
+    color: white;
+    border-right: 0;
+  }
+  .form-control {
+    border-left: 0;
+    background-color: #212529;
+    color: white;
+  }
+  .form-control::placeholder {
+    color: #6c757d;
+  }
+  .btn-custom {
+    background-color: #00565a;
+    color: white;
+  }
+  .btn-custom:hover {
+    background-color: #004447;
+    color: white;
+  }
+  .progress {
+    height: 5px;
+  }

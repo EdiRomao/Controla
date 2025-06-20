@@ -1,0 +1,123 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+  }
+  .sidebar {
+    background-color: #00565a;
+    color: white;
+    width: 230px;
+    transition: width 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  .sidebar-mini {
+    width: 70px;
+  }
+  .sidebar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+  .sidebar-mobile.active {
+    transform: translateX(0);
+  }
+  .workspace-section {
+    padding: 0 10px;
+  }
+  .workspace-button {
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    transition: all 0.3s;
+  }
+  .workspace-button:hover {
+    background-color: #343a4097;
+    border-radius: 5px;
+  }
+  .sidebar-mini .workspace-button span,
+  .sidebar-mobile .workspace-button span {
+    display: none;
+  }
+  .sidebar-mini .workspace-button i,
+  .sidebar-mobile .workspace-button i {
+    margin-bottom: 0 !important;
+    font-size: 24px !important;
+  }
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+  }
+  .toggle-btn:hover {
+    color: #adb5bd;
+  }
+  header {
+    background-color: #00565a;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+  }
+  .nav-link {
+    color: white;
+    transition: color 0.2s;
+  }
+  .nav-link:hover {
+    color: #adb5bd;
+  }
+  .mobile-nav-link {
+    color: #fff;
+    padding: 0.5rem 0;
+  }
+  .mobile-nav-link:hover {
+    background-color: #f8f9fa;
+  }
+  .empresa-nome {
+    color: white;
+    font-weight: 500;
+  }
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  @media (max-width: 767.98px) {
+    .sidebar {
+      position: fixed;
+      width: 230px;
+      transform: translateX(-100%);
+    }
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    .main-content {
+      margin-left: 0;
+    }
+  }
+  @media (min-width: 768px) {
+    .sidebar {
+      position: relative;
+    }
+    .main-content {
+      margin-left: 230px;
+    }
+    .sidebar-mini + .main-content {
+      margin-left: 70px;
+    }
+  }
+  .mobile-menu {
+    z-index: 1050;
+    max-width: 100vw;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }

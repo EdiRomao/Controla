@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="public/assets/css/bootstrap.min.css" rel="stylesheet" >
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="public/assets/css/font/all.min.css">
+  <!-- icons vindo apartir de online-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="public/assets/css/login.css">
+</head>
+<body>
+  <!-- Notification -->
+  <div id="notification" class="notification d-none alert alert-dismissible fade show" role="alert">
+    <i id="notification-icon" class="me-2"></i>
+    <span id="notification-message"></span>
+    <button type="button" class="btn-close" onclick="dismissNotification()"></button>
+  </div>
+
+  <!-- Login Card -->
+  <div class="login-card p-4 shadow-lg">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold fs-5">Tudo o que precisa!</h2>
+      <p class="fs-6">Facturação, Relatórios e Workspace.</p>
+    </div>
+
+    <!-- Google Login Button -->
+    <div class="mb-4">
+      <button type="button" onclick="handleGoogleLogin()" class="btn btn-light btn-lg w-100 d-flex align-items-center justify-content-center">
+        <img src="public/assets/img/google.png" alt="Google" class="me-2" style="width: 20px; height: 20px;">
+        Entrar com Google
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <span>ou</span>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" class="mb-4" onsubmit="handleLogin(event)">
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          <input
+            type="email"
+            class="form-control form-control-lg fs-6"
+            placeholder="Meu@gmail.com"
+            id="email"
+            required
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          <input
+            type="password"
+            class="form-control form-control-lg fs-6"
+            placeholder="Senha"
+            id="senha"
+            required
+          >
+        </div>
+      </div>
+      <div class="mb-3 text-end">
+        <a href="/recuperar-senha" class="text-white text-decoration-none">
+          Esqueceu a sua senha? <strong class="fw-bold text-white">Clica aqui!</strong>
+        </a>
+      </div>
+      <div class="d-grid">
+        <a class="btn btn-custom btn-lg text-ligth" href="pages/admin/painelprincipal.html">Entrar</a>
+      </div>
+    </form>
+
+    <!-- Sign Up Link -->
+    <div class="text-center">
+      <p>
+        Não tem uma conta? 
+        <a href="pages/cadastro.html" class="text-white text-decoration-underline">Crie uma aqui</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper -->
+  <script src="public/assets/css/font/popper.min.js"></script>
+  <script src="public/assets/js/bootstrap.min.js"></script>
+  <!-- <script>
+    function showNotification(type, message) {
+      const notification = document.getElementById('notification');
+      const notificationIcon = document.getElementById('notification-icon');
+      const notificationMessage = document.getElementById('notification-message');
+      
+      notification.classList.remove('d-none', 'alert-success', 'alert-danger');
+      notification.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
+      notificationIcon.className = 'me-2 ' + (type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle');
+      notificationMessage.textContent = message;
+      
+      setTimeout(() => {
+        notification.classList.add('d-none');
+      }, 5000);
+    }
+
+    function dismissNotification() {
+      document.getElementById('notification').classList.add('d-none');
+    }
+
+    async function handleGoogleLogin() {
+      try {
+        // Simula login com Google (substituir pela lógica real do NextAuth)
+        console.log('Iniciando login com Google...');
+        // Exemplo: await signIn('google');
+      } catch (err) {
+        console.error('Erro ao iniciar login com Google:', err);
+        showNotification('error', 'Erro ao conectar com o Google.');
+      }
+    }
+
+    async function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      try {
+        const response = await fetch('http://localhost:3001/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          console.error('Erro ao logar:', error);
+          showNotification('error', 'Erro ao logar: ' + error.message);
+          document.getElementById('email').value = '';
+          document.getElementById('senha').value = '';
+          return;
+        }
+
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('name', data.empresa);
+
+        showNotification('success', 'Login bem-sucedido!');
+
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1500);
+      } catch (err) {
+        console.error('Erro ao conectar com o servidor:', err);
+        showNotification('error', 'Erro de conexão com o servidor.');
+      }
+    }
+  </script> -->

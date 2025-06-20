@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Novo Time - Workspace</title>
+  <link href="../../../../public/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../public/assets/css/nav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    .shadow-sm { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; }
+    .border-0 { border: 0 !important; }
+    .bg-light { background-color: #f8f9fa !important; }
+    .text-secondary { color: #6c757d !important; }
+  </style>
+</head>
+<body>
+   
+    <header>
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Botão de menu móvel -->
+                <button class="btn btn-sm border-0 d-md-none text-white" onclick="toggleSidebar()"
+                    aria-label="Toggle sidebar">
+                    <i class="fas fa-bars" style="font-size: 24px;"></i>
+                </button>
+
+                <!-- Navegação para telas médias e grandes -->
+                <div class="d-none d-md-flex align-items-center">
+                    <a href="/usuarios" class="nav-link me-4">
+                        <i class="fas fa-users" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/calendario" class="nav-link me-4">
+                        <i class="fas fa-calendar" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/documentos" class="nav-link me-4">
+                        <i class="fas fa-file-alt" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/workspace/comunicacao" class="nav-link me-3">
+                        <i class="fas fa-comment" style="font-size: 22px;"></i>
+                    </a>
+                </div>
+
+                <!-- Utilitários e perfil -->
+                <div class="d-none d-md-flex align-items-center">
+                    <a href="/ajuda" class="nav-link d-flex align-items-center me-4">
+                        <i class="fas fa-question-circle" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/pesquisar" class="nav-link d-flex align-items-center me-4">
+                        <i class="fas fa-search" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/notificacoes" class="nav-link d-flex align-items-center me-4">
+                        <i class="fas fa-bell" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/perfil" class="nav-link d-flex align-items-center me-4">
+                        <i class="fas fa-user" style="font-size: 24px;"></i>
+                    </a>
+                    <a href="/login" class="nav-link me-4">
+                        <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
+                    </a>
+                    <span id="empresa-nome" class="empresa-nome ms-2"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu position-absolute start-0 top-100 p-3 d-none">
+            <div class="row">
+                <div class="col-12 mb-3 border-bottom pb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span id="mobile-empresa-nome" class="fw-bold"></span>
+                    </div>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <div class="fw-bold mb-2">Navegação</div>
+                    <a href="/usuarios"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-users me-2" style="font-size: 20px;"></i>
+                        <span>Usuários</span>
+                    </a>
+                    <a href="/calendario"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-calendar me-2" style="font-size: 20px;"></i>
+                        <span>Calendário</span>
+                    </a>
+                    <a href="/documentos"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-file-alt me-2" style="font-size: 20px;"></i>
+                        <span>Documentos</span>
+                    </a>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <div class="fw-bold mb-2">Utilitários</div>
+                    <a href="/ajuda"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-question-circle me-2" style="font-size: 20px;"></i>
+                        <span>Ajuda</span>
+                    </a>
+                    <a href="/pesquisar"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-search me-2" style="font-size: 20px;"></i>
+                        <span>Pesquisar</span>
+                    </a>
+                    <a href="/notificacoes"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-bell me-2" style="font-size: 20px;"></i>
+                        <span>Notificações</span>
+                    </a>
+                    <a href="/perfil"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-user me-2" style="font-size: 20px;"></i>
+                        <span>Perfil</span>
+                    </a>
+                    <a href="/mensagens"
+                        class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-comment me-2" style="font-size: 20px;"></i>
+                        <span>Mensagens</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- sidbar da pagina-->
+    <div class="wrapper">
+    <div id="sidebar" class="sidebar">
+        <div>
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <div id="workspace-section" class="d-flex align-items-center">
+                    <i class="fas fa-table me-2"></i>
+                    <span class="fw-bold">Workspace</span>
+                </div>
+                <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()"
+                    title="Minimizar">
+                    <i id="toggle-icon" class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div id="menu-items" class="mt-2">
+                <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-th-large me-3" style="font-size: 20px;"></i>
+                        <span>Visão Geral</span>
+                    </div>
+                </a>
+                <a href="../painelworkspace.html" class="text-decoration-none text-white menu-item"
+                    data-name="Voltar">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                        <span>Voltar</span>
+                    </div>
+                </a>
+                <a href="../tarefas/viewtasks.html" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-list-ul me-3" style="font-size: 20px;"></i>
+                        <span>Tarefas</span>
+                    </div>
+                </a>
+                <a href="./viewtime.html" class="text-decoration-none text-white menu-item" data-name="Equipa">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                        <span>Equipa</span>
+                    </div>
+                </a>
+                <a href="../comunicacao/chat.html" class="text-decoration-none text-white menu-item"
+                    data-name="Comunicações">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-comment me-3" style="font-size: 20px;"></i>
+                        <span>Comunicações</span>
+                    </div>
+                </a>
+                <a href="#" class="text-decoration-none text-white menu-item"
+                    data-name="Relatórios">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                        <span>Relatórios</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                        <span>Configurações</span>
+                    </div>
+                </a>
+                <a href="#" class="text-decoration-none text-white menu-item"
+                    data-name="Permissões">
+                    <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-folder-lock me-3" style="font-size: 20px;"></i>
+                        <span>Permissões</span>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+
+        <div class="mt-auto mb-3">
+            <a href="../../../../index.html" class="text-decoration-none text-white">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+                    <span>Sair</span>
+                </div>
+            </a>
+        </div>
+    </div>
+  <div class="container-fluid p-4 bg-white">
+    <!-- Header Section -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex align-items-center">
+          <a href="workspace/equipa" class="text-decoration-none">
+            <div class="d-flex align-items-center text-dark">
+              <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              <span>Voltar</span>
+            </div>
+          </a>
+          <h1 class="fw-bold ms-4 mb-0 fs-4">Adicionar Novo Time</h1>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Form -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm p-4 mb-4">
+          <h5 class="mb-3">Informações do Time</h5>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label for="nome" class="form-label">Nome do Time</label>
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Time de Desenvolvimento">
+            </div>
+            <div class="col-md-6">
+              <label for="responsavel" class="form-label">Responsável</label>
+              <select class="form-select" id="responsavel" name="responsavel">
+                <option value="">Selecionar Responsável</option>
+                <option value="Jose Matos">José Matos</option>
+                <option value="Barroso André">Barroso André</option>
+                <option value="Raquel Domingos">Raquel Domingos</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="departamento" class="form-label">Departamento</label>
+              <select class="form-select" id="departamento" name="departamento">
+                <option value="">Selecionar Departamento</option>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Vendas">Vendas</option>
+                <option value="Administrativo">Administrativo</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="status" class="form-label">Status</label>
+              <select class="form-select" id="status">
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="descricao" class="form-label">Descrição</label>
+              <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descreva o propósito e objetivo deste time"></textarea>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Membros do Time</h5>
+            <button class="btn text-white px-3 py-2" style="background-color: #00565a; border-radius: 4px;" onclick="adicionarMembro()">+ Adicionar Membro</button>
+          </div>
+
+          <div id="membrosContainer">
+            <div class="card mb-3 border p-3" data-id="1">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">Membro #1</h6>
+                <button class="btn btn-light btn-sm" onclick="removerMembro(1)" disabled>Remover</button>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control" name="nome_1" placeholder="Nome do membro">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Cargo</label>
+                  <input type="text" class="form-control" name="cargo_1" placeholder="Cargo">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email_1" placeholder="email@empresa.com">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Telefone</label>
+                  <input type="text" class="form-control" name="telefone_1" placeholder="123 456 789">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-end gap-3">
+          <button class="btn btn-light px-4 py-2" style="border-radius: 4px;">Cancelar</button>
+          <button class="btn text-white px-4 py-2" style="background-color: #00565a; border-radius: 4px;" onclick="salvarTime()">
+            <svg class="me-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            Salvar Time
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import Team Section -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm p-4">
+          <div class="d-flex align-items-center mb-3">
+            <div class="bg-light rounded-circle p-3 me-3">
+              <svg class="text-secondary" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <div>
+              <h5 class="mb-0">Importar dados do time</h5>
+              <p class="mb-0">Importe membros da equipe através de arquivo CSV ou Excel</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <button class="btn text-white px-4 py-2 me-3" style="background-color: #00565a; border-radius: 4px;">Importar Arquivo</button>
+            <a href="#" class="text-decoration-none">Baixar modelo de arquivo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="../../../../public/assets/js/time.js"></script>
+  <script src="../../../../public/assets/js/sidbar.js"></script>
+</body>
+</html>

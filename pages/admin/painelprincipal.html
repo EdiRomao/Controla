@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../public/assets/css/painel.css" >
+  <link rel="stylesheet" href="../../public/assets/css/bootstrap.min.css">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Botão de menu móvel -->
+        <button class="btn btn-sm border-0 d-md-none text-ligth" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+          <i class="fas fa-bars" style="font-size: 28px;"></i>
+        </button>
+        <!-- Navegação para telas médias e grandes -->
+        <div class="d-none d-md-flex align-items-center mx-5 ">
+
+            <a href="/notificacoes" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-bell me-2" style="font-size: 28px;"></i>
+                <span>Notificações</span>
+            </a>
+            <a href="/perfil" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-user me-2" style="font-size: 28px;"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+
+        <!-- Utilitários e perfil -->
+        <div class="d-flex align-items-center mx-3 m-2 ">
+            
+            <a href="/calendario" class="nav-link me-4 text-white">
+                <i class="fas fa-calendar" style="font-size: 28px;"></i>
+            </a>
+            <a href="/usuarios" class="nav-link me-4 text-white">
+                <i class="fas fa-users" style="font-size: 28px;"></i>
+            </a>
+            <a href="/mensagens" class="nav-link me-3 text-white">
+                <i class="fas fa-comment" style="font-size: 28px;"></i>
+              </a>
+          <a href="/login" class="nav-link me-4 d-none d-md-block text-white">
+            <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
+          </a>
+
+          <span id="empresa-nome" class="empresa-nome ms-2"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Wrapper para Sidebar e Conteúdo -->
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div>
+        <div class="d-flex justify-content-between align-items-center mb-4 py-2 px-3">
+          <div id="sidebar-title" class="text-center flex-grow-1"></div>
+          <button class="toggle-btn btn btn-sm ms-auto" onclick="toggleSidebar()" title="Minimizar">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+          </button>
+        </div>
+
+        <div id="workspace-section" class="workspace-section mb-4 px-3">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-box me-2"></i>
+            <h5 class="mb-0">Controla</h5>
+          </div>
+        </div>
+
+        <div class="workspace-section mb-4">
+          <a href="workspace/painelworkspace.html" class="text-decoration-none text-white">
+            <div class="workspace-button d-flex flex-column align-items-center py-2">
+              <i class="fas fa-layer-group mb-2" style="font-size: 40px;"></i>
+              <span>Workspace</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="workspace-section mb-4">
+          <a href="#" class="text-decoration-none text-white">
+            <div class="workspace-button d-flex flex-column align-items-center py-2">
+              <i class="fas fa-chart-bar mb-2" style="font-size: 40px;"></i>
+              <span class="fs-6">Facturação & Relatórios</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="workspace-section mt-auto mb-3">
+        <a href="../../index.html" class="text-decoration-none text-white">
+          <div class="workspace-button d-flex flex-column align-items-center py-2">
+            <i class="fas fa-sign-out-alt mb-2" style="font-size: 40px;"></i>
+            <span>Sair</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+      <!-- Placeholder para conteúdo -->
+      <img src="../../public/assets/img/main.png" alt="">
+    </main>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu position-absolute start-0 top-100 p-3 d-none">
+    <div class="row">
+      <div class="col-12 mb-3 border-bottom pb-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <span id="mobile-empresa-nome" class="fw-bold"></span>
+        </div>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="fw-bold mb-2">Navegação</div>
+        <a href="/usuarios" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-users me-2" style="font-size: 20px;"></i>
+          <span>Usuários</span>
+        </a>
+        <a href="/calendario" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-calendar me-2" style="font-size: 20px;"></i>
+          <span>Calendário</span>
+        </a>
+        <a href="/documentos" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-file-alt me-2" style="font-size: 20px;"></i>
+          <span>Documentos</span>
+        </a>
+      </div>
+
+      <div class="col-6 mb-3">
+        <div class="fw-bold mb-2">Utilitários</div>
+        <a href="/ajuda" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-question-circle me-2" style="font-size: 20px;"></i>
+          <span>Ajuda</span>
+        </a>
+        <a href="/pesquisar" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-search me-2" style="font-size: 20px;"></i>
+          <span>Pesquisar</span>
+        </a>
+        <a href="/notificacoes" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-bell me-2" style="font-size: 20px;"></i>
+          <span>Notificações</span>
+        </a>
+        <a href="/perfil" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-user me-2" style="font-size: 20px;"></i>
+          <span>Perfil</span>
+        </a>
+        <a href="/mensagens" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+          <i class="fas fa-comment me-2" style="font-size: 20px;"></i>
+          <span>Mensagens</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper -->
+  <script src="../../public/assets/js/popper.min.js"></script>
+  <script src="../../public/assets/js/bootstrap.min.js"></script>
+   <script>
+    let minimized = false;
+    let showMobileMenu = false;
+    let sidebarMobile = false;
+
+    
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleIcon = document.getElementById('toggle-icon');
+      const workspaceSection = document.getElementById('workspace-section');
+      const titleSection = document.getElementById('sidebar-title');
+      const mainContent = document.querySelector('.main-content');
+
+      if (window.innerWidth < 768) {
+        sidebarMobile = !sidebarMobile;
+        sidebar.classList.toggle('active', sidebarMobile);
+        sidebar.classList.toggle('sidebar-mobile', sidebarMobile);
+      } else {
+        minimized = !minimized;
+        sidebar.classList.toggle('sidebar-mini', minimized);
+        if (minimized) {
+          toggleIcon.classList.remove('fa-chevron-left');
+          toggleIcon.classList.add('fa-chevron-right');
+          workspaceSection.style.display = 'none';
+          titleSection.style.display = 'none';
+          document.querySelectorAll('.workspace-button i').forEach(icon => {
+            icon.style.fontSize = '24px';
+          });
+        } else {
+          toggleIcon.classList.remove('fa-chevron-right');
+          toggleIcon.classList.add('fa-chevron-left');
+          workspaceSection.style.display = 'block';
+          titleSection.style.display = 'block';
+          document.querySelectorAll('.workspace-button i').forEach(icon => {
+            icon.style.fontSize = '40px';
+          });
+        }
+      }
+    }
+
+    function handleClickOutside(event) {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      if (mobileMenu && !mobileMenu.contains(event.target) && !event.target.closest('.btn')) {
+        showMobileMenu = false;
+        mobileMenu.classList.add('d-none');
+      }
+      if (sidebarMobile && sidebar && !sidebar.contains(event.target) && !event.target.closest('.btn')) {
+        sidebarMobile = false;
+        sidebar.classList.remove('active');
+        sidebar.classList.remove('sidebar-mobile');
+      }
+    }
+
+    // Carregar dados do usuário ao iniciar
+    fetchUserData();
+
+    // Adicionar evento de clique fora para fechar o menu
+    document.addEventListener('mousedown', handleClickOutside);
+  </script> 
+</body>
+</html>
