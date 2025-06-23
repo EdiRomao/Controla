@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Empresa</title>
+    <link rel="stylesheet" href="../../../public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../public/assets/css/nav.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../public/assets/css/perfil.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Botão de menu móvel -->
+            <button class="btn btn-sm border-0 d-md-none text-white" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+              <i class="fas fa-bars" style="font-size: 24px;"></i>
+            </button>
+    
+            <!-- Navegação para telas médias e grandes -->
+            <div class="d-none d-md-flex align-items-center">
+              <a href="/usuarios" class="nav-link me-4">
+                <i class="fas fa-users" style="font-size: 24px;"></i>
+              </a>
+              <a href="/calendario" class="nav-link me-4">
+                <i class="fas fa-calendar" style="font-size: 24px;"></i>
+              </a>
+              <a href="/documentos" class="nav-link me-4">
+                <i class="fas fa-file-alt" style="font-size: 24px;"></i>
+              </a>
+              <a href="/workspace/comunicacao" class="nav-link me-3">
+                <i class="fas fa-comment" style="font-size: 22px;"></i>
+              </a>
+            </div>
+    
+            <!-- Utilitários e perfil -->
+            <div class="d-none d-md-flex align-items-center">
+              <a href="/ajuda" class="nav-link d-flex align-items-center me-4">
+                <i class="fas fa-question-circle" style="font-size: 24px;"></i>
+              </a>
+              <a href="/pesquisar" class="nav-link d-flex align-items-center me-4">
+                <i class="fas fa-search" style="font-size: 24px;"></i>
+              </a>
+              <a href="/notificacoes" class="nav-link d-flex align-items-center me-4">
+                <i class="fas fa-bell" style="font-size: 24px;"></i>
+              </a>
+              <a href="./perfil.html" class="nav-link d-flex align-items-center me-4">
+                <i class="fas fa-user" style="font-size: 24px;"></i>
+              </a>
+              <a href="../../../../index.html" class="nav-link me-4">
+                <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
+              </a>
+              <span id="empresa-nome" class="empresa-nome ms-2"></span>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu position-absolute start-0 top-100 p-3 d-none">
+          <div class="row">
+            <div class="col-12 mb-3 border-bottom pb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span id="mobile-empresa-nome" class="fw-bold"> Minha Empresa</span>
+              </div>
+            </div>
+    
+            <div class="col-6 mb-3">
+              <div class="fw-bold mb-2">Navegação</div>
+              <a href="/usuarios" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-users me-2" style="font-size: 20px;"></i>
+                <span>Usuários</span>
+              </a>
+              <a href="/calendario" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-calendar me-2" style="font-size: 20px;"></i>
+                <span>Calendário</span>
+              </a>
+              <a href="/documentos" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-file-alt me-2" style="font-size: 20px;"></i>
+                <span>Documentos</span>
+              </a>
+            </div>
+    
+            <div class="col-6 mb-3">
+              <div class="fw-bold mb-2">Utilitários</div>
+              <a href="/ajuda" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-question-circle me-2" style="font-size: 20px;"></i>
+                <span>Ajuda</span>
+              </a>
+              <a href="/pesquisar" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-search me-2" style="font-size: 20px;"></i>
+                <span>Pesquisar</span>
+              </a>
+              <a href="/notificacoes" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-bell me-2" style="font-size: 20px;"></i>
+                <span>Notificações</span>
+              </a>
+              <a href="/perfil" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-user me-2" style="font-size: 20px;"></i>
+                <span>Perfil</span>
+              </a>
+              <a href="/mensagens" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+                <i class="fas fa-comment me-2" style="font-size: 20px;"></i>
+                <span>Mensagens</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Sidebar -->
+      <div class="wrapper">
+      <div id="sidebar" class="sidebar">
+        <div>
+          <div class="d-flex justify-content-between align-items-center p-3">
+            <div id="workspace-section" class="d-flex align-items-center">
+              <i class="fas fa-table me-2"></i>
+              <span class="fw-bold">Workspace</span>
+            </div>
+            <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()" title="Minimizar">
+              <i id="toggle-icon" class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+  
+          <div id="menu-items" class="mt-2">
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-th-large me-3" style="font-size: 20px;"></i>
+                <span>Visão Geral</span>
+              </div>
+            </a>
+            <a href="../painelworkspace.html" class="text-decoration-none text-white menu-item" data-name="Voltar">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                <span>Voltar</span>
+              </div>
+            </a>
+            <a href="./viewtasks.html" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-list-ul me-3" style="font-size: 20px;"></i>
+                <span>Tarefas</span>
+              </div>
+            </a>
+            <a href="../time/viewtime.html" class="text-decoration-none text-white menu-item" data-name="Equipa">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                <span>Equipa</span>
+              </div>
+            </a>
+            <a href="../comunicacao/chat.html" class="text-decoration-none text-white menu-item" data-name="Comunicações">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-comment me-3" style="font-size: 20px;"></i>
+                <span>Comunicações</span>
+              </div>
+            </a>
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Relatórios">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                <span>Relatórios</span>
+              </div>
+            </a>
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                <span>Configurações</span>
+              </div>
+            </a>
+            <a href="/workspace/permissoes" class="text-decoration-none text-white menu-item" data-name="Permissões">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-folder me-3" style="font-size: 20px;"></i>
+                <span>Permissões</span>
+              </div>
+            </a>
+          </div>
+        </div>
+  
+        <div class="mt-auto mb-3">
+          <a href="../../../../index.html" class="text-decoration-none text-white">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+              <span>Sair</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    
+
+
+    <div class="container-fluid p-4">
+        <!-- Alerta de erro (inicialmente oculto) -->
+        <div id="errorAlert" class="alert alert-danger d-none" role="alert">
+            Erro ao salvar as informações!
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">Perfil da Empresa</h2>
+                    <button class="btn btn-outline-secondary" id="editBtn">
+                        <i class="fas fa-edit me-2" style="color: #00565a;"></i>
+                        <span id="editBtnText">Editar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Coluna da esquerda -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <div class="company-avatar mb-3">
+                                <i class="fas fa-building" style="font-size: 80px; color: #00565a;"></i>
+                                <button class="edit-avatar-btn">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="empresaDisplay">
+                                <h3 class="mb-1">TechCorp Angola</h3>
+                            </div>
+                            <div id="empresaEdit" class="d-none">
+                                <input type="text" class="form-control form-control-lg mb-1" id="empresaInput" value="TechCorp Angola">
+                            </div>
+                            
+                            <div id="responsavelDisplay">
+                                <p class="text-muted">João Silva - CEO</p>
+                            </div>
+                            <div id="responsavelEdit" class="d-none">
+                                <input type="text" class="form-control" id="responsavelInput" value="João Silva - CEO">
+                            </div>
+                        </div>
+                        
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item border-0 px-0 d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt me-3" style="color: #00565a; font-size: 20px;"></i>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 small">Localização</p>
+                                    <div id="locationDisplay">
+                                        <p class="mb-0">Luanda, Angola</p>
+                                    </div>
+                                    <div id="locationEdit" class="d-none">
+                                        <input type="text" class="form-control" id="locationInput" value="Luanda, Angola">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group-item border-0 px-0 d-flex align-items-center">
+                                <i class="fas fa-home me-3" style="color: #00565a; font-size: 20px;"></i>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 small">Morada</p>
+                                    <div id="addressDisplay">
+                                        <p class="mb-0">Rua da Independência, 123<br>Ingombota, Luanda</p>
+                                    </div>
+                                    <div id="addressEdit" class="d-none">
+                                        <textarea class="form-control" id="addressInput">Rua da Independência, 123&#10;Ingombota, Luanda</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group-item border-0 px-0 d-flex align-items-center">
+                                <i class="fas fa-globe me-3" style="color: #00565a; font-size: 20px;"></i>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 small">Website</p>
+                                    <div id="websiteDisplay">
+                                        <p class="mb-0">www.techcorp.ao</p>
+                                    </div>
+                                    <div id="websiteEdit" class="d-none">
+                                        <input type="text" class="form-control" id="websiteInput" value="www.techcorp.ao">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group-item border-0 px-0 d-flex align-items-center">
+                                <i class="fas fa-envelope me-3" style="color: #00565a; font-size: 20px;"></i>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 small">Email</p>
+                                    <div id="emailDisplay">
+                                        <p class="mb-0">contato@techcorp.ao</p>
+                                    </div>
+                                    <div id="emailEdit" class="d-none">
+                                        <input type="email" class="form-control" id="emailInput" value="contato@techcorp.ao">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group-item border-0 px-0 d-flex align-items-center">
+                                <i class="fas fa-phone me-3" style="color: #00565a; font-size: 20px;"></i>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 small">Telefone</p>
+                                    <div id="telefoneDisplay">
+                                        <p class="mb-0">+244 923 456 789</p>
+                                    </div>
+                                    <div id="telefoneEdit" class="d-none">
+                                        <input type="text" class="form-control" id="telefoneInput" value="+244 923 456 789">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna da direita -->
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    <!-- Informações fiscais -->
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4 d-flex align-items-center">
+                                    <i class="fas fa-file-text me-2" style="color: #00565a; font-size: 22px;"></i>
+                                    Informações Fiscais
+                                </h5>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card bg-light border-0">
+                                            <div class="card-body py-3">
+                                                <p class="text-muted mb-1 small">NIF</p>
+                                                <div id="nifDisplay">
+                                                    <h5 class="mb-0">5417845963</h5>
+                                                </div>
+                                                <div id="nifEdit" class="d-none">
+                                                    <input type="text" class="form-control" id="nifInput" value="5417845963">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="card bg-light border-0">
+                                            <div class="card-body py-3">
+                                                <p class="text-muted mb-1 small">Desde</p>
+                                                <div id="sinceDisplay">
+                                                    <h5 class="mb-0">2018</h5>
+                                                </div>
+                                                <div id="sinceEdit" class="d-none">
+                                                    <input type="text" class="form-control" id="sinceInput" value="2018">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="card bg-light border-0">
+                                            <div class="card-body py-3">
+                                                <p class="text-muted mb-1 small">Status</p>
+                                                <div id="statusDisplay">
+                                                    <h5 class="mb-0">
+                                                        <span class="badge bg-success">Ativo</span>
+                                                    </h5>
+                                                </div>
+                                                <div id="statusEdit" class="d-none">
+                                                    <select class="form-select" id="statusInput">
+                                                        <option value="Ativo" selected>Ativo</option>
+                                                        <option value="Inativo">Inativo</option>
+                                                        <option value="Pendente">Pendente</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="card bg-light border-0">
+                                            <div class="card-body py-3">
+                                                <p class="text-muted mb-1 small">Funcionários</p>
+                                                <div id="employeesDisplay">
+                                                    <h5 class="mb-0">45</h5>
+                                                </div>
+                                                <div id="employeesEdit" class="d-none">
+                                                    <input type="text" class="form-control" id="employeesInput" value="45">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Atividade Recente -->
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4 d-flex align-items-center">
+                                    <i class="fas fa-clock me-2" style="color: #00565a; font-size: 22px;"></i>
+                                    Atividade Recente
+                                </h5>
+                                
+                                <div class="timeline">
+                                    <div class="timeline-item pb-4">
+                                        <div class="d-flex">
+                                            <div class="timeline-icon bg-primary bg-opacity-10 p-2 rounded me-3">
+                                                <i class="fas fa-file-text" style="color: #00565a; font-size: 18px;"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Fatura emitida</h6>
+                                                <p class="text-muted mb-0 small">Fatura #2435 emitida no valor de 135.000,00 KZ</p>
+                                                <p class="text-muted mb-0 small">17/04/2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item pb-4">
+                                        <div class="d-flex">
+                                            <div class="timeline-icon bg-success bg-opacity-10 p-2 rounded me-3">
+                                                <i class="fas fa-dollar-sign" style="color: #00565a; font-size: 18px;"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Pagamento recebido</h6>
+                                                <p class="text-muted mb-0 small">Pagamento da Fatura #2430 recebido</p>
+                                                <p class="text-muted mb-0 small">15/04/2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item pb-4">
+                                        <div class="d-flex">
+                                            <div class="timeline-icon bg-warning bg-opacity-10 p-2 rounded me-3">
+                                                <i class="fas fa-calendar" style="color: #00565a; font-size: 18px;"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Reunião agendada</h6>
+                                                <p class="text-muted mb-0 small">Reunião de acompanhamento com o cliente</p>
+                                                <p class="text-muted mb-0 small">12/04/2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="timeline-item">
+                                        <div class="d-flex">
+                                            <div class="timeline-icon bg-info bg-opacity-10 p-2 rounded me-3">
+                                                <i class="fas fa-users" style="color: #00565a; font-size: 18px;"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Novo contacto adicionado</h6>
+                                                <p class="text-muted mb-0 small">Maria Silva adicionada como contacto</p>
+                                                <p class="text-muted mb-0 small">10/04/2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer bg-white border-0">
+                                <a href="#" class="btn btn-outline-primary" style="color: #00565a; border-color: #00565a;">
+                                    Ver histórico completo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="../../../public/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../public/assets/js/sidbar.js"></script>
+    <script>
+        let isEditing = false;
+        
+        const editableFields = [
+            'empresa', 'responsavel', 'location', 'address', 
+            'website', 'email', 'telefone', 'nif', 'since', 
+            'status', 'employees'
+        ];
+
+        const editBtn = document.getElementById('editBtn');
+        const editBtnText = document.getElementById('editBtnText');
+        const editIcon = editBtn.querySelector('i');
+
+        function toggleEdit() {
+            isEditing = !isEditing;
+            
+            if (isEditing) {
+                // Mudar para modo de edição
+                editBtnText.textContent = 'Guardar';
+                editIcon.className = 'fas fa-check-circle me-2';
+                
+                editableFields.forEach(field => {
+                    const displayElement = document.getElementById(field + 'Display');
+                    const editElement = document.getElementById(field + 'Edit');
+                    
+                    if (displayElement && editElement) {
+                        displayElement.classList.add('d-none');
+                        editElement.classList.remove('d-none');
+                    }
+                });
+            } else {
+                // Guardar e voltar ao modo de visualização
+                saveChanges();
+                editBtnText.textContent = 'Editar';
+                editIcon.className = 'fas fa-edit me-2';
+                
+                editableFields.forEach(field => {
+                    const displayElement = document.getElementById(field + 'Display');
+                    const editElement = document.getElementById(field + 'Edit');
+                    
+                    if (displayElement && editElement) {
+                        displayElement.classList.remove('d-none');
+                        editElement.classList.add('d-none');
+                    }
+                });
+            }
+        }
+
+        function saveChanges() {
+            // Atualizar os valores de exibição com os valores dos inputs
+            const updates = {
+                empresa: { input: 'empresaInput', display: 'empresaDisplay', tag: 'h3', class: 'mb-1' },
+                responsavel: { input: 'responsavelInput', display: 'responsavelDisplay', tag: 'p', class: 'text-muted' },
+                location: { input: 'locationInput', display: 'locationDisplay', tag: 'p', class: 'mb-0' },
+                address: { input: 'addressInput', display: 'addressDisplay', tag: 'p', class: 'mb-0', preserveLineBreaks: true },
+                website: { input: 'websiteInput', display: 'websiteDisplay', tag: 'p', class: 'mb-0' },
+                email: { input: 'emailInput', display: 'emailDisplay', tag: 'p', class: 'mb-0' },
+                telefone: { input: 'telefoneInput', display: 'telefoneDisplay', tag: 'p', class: 'mb-0' },
+                nif: { input: 'nifInput', display: 'nifDisplay', tag: 'h5', class: 'mb-0' },
+                since: { input: 'sinceInput', display: 'sinceDisplay', tag: 'h5', class: 'mb-0' },
+                employees: { input: 'employeesInput', display: 'employeesDisplay', tag: 'h5', class: 'mb-0' }
+            };
+
+            Object.keys(updates).forEach(field => {
+                const config = updates[field];
+                const inputElement = document.getElementById(config.input);
+                const displayElement = document.getElementById(config.display);
+                
+                if (inputElement && displayElement) {
+                    let value = inputElement.value;
+                    if (config.preserveLineBreaks) {
+                        value = value.replace(/\n/g, '<br>');
+                    }
+                    displayElement.innerHTML = `<${config.tag} class="${config.class}">${value}</${config.tag}>`;
+                }
+            });
+
+            // Tratamento especial para o status
+            const statusInput = document.getElementById('statusInput');
+            const statusDisplay = document.getElementById('statusDisplay');
+            if (statusInput && statusDisplay) {
+                const statusValue = statusInput.value;
+                let badgeClass = 'bg-success';
+                if (statusValue === 'Inativo') badgeClass = 'bg-danger';
+                if (statusValue === 'Pendente') badgeClass = 'bg-warning';
+                
+                statusDisplay.innerHTML = `<h5 class="mb-0"><span class="badge ${badgeClass}">${statusValue}</span></h5>`;
+            }
+
+            // Simular sucesso ao guardar
+            console.log('Alterações guardadas com sucesso!');
+        }
+
+        editBtn.addEventListener('click', toggleEdit);
+    </script>
+</body>
+</html>

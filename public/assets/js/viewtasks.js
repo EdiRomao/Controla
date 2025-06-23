@@ -83,7 +83,7 @@ const orderData = [
             <td class="py-3"><a href="#" class="text-success"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></a></td>
             
             <td class="py-3">
-              <a class="btn btn-link p-0" href="admin/workspace/tarefas/visualizartarefa.html" onclick="viewTask(${item.id})" title="Visualizar">
+              <a class="btn btn-link p-0" href="../../../admin/workspace/tarefas/visualizartarefa.html"  title="Visualizar">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 4.5C8.5 4.5 5.5 7.5 3 12c2.5 4.5 5.5 7.5 9 7.5s6.5-3 9-7.5c-2.5-4.5-5.5-7.5-9-7.5z"/>
                 <path d="M12 9.5c1.5 0 2.5 1 2.5 2.5S13.5 14.5 12 14.5 9.5 13.5 9.5 12 10.5 9.5 12 9.5z"/>

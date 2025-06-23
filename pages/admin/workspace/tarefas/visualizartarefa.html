@@ -59,7 +59,7 @@
           <a href="../../../../index.html" class="nav-link me-4">
             <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
           </a>
-          <span id="empresa-nome" class="empresa-nome ms-2">Minha Empresa</span>
+          <span id="empresa-nome" class="empresa-nome ms-2">Nome da Empresa</span>
         </div>
       </div>
     </div>
@@ -69,7 +69,7 @@
       <div class="row">
         <div class="col-12 mb-3 border-bottom pb-3">
           <div class="d-flex justify-content-between align-items-center">
-            <span id="mobile-empresa-nome" class="fw-bold">Minha Empresa</span>
+            <span id="mobile-empresa-nome" class="fw-bold">Nome da Empresa</span>
           </div>
         </div>
 
@@ -114,101 +114,101 @@
         </div>
       </div>
     </div>
-  </header>
+  </header>  
 
   <!-- Wrapper para Sidebar e Conteúdo -->
   <div class="wrapper">
     <!-- Sidebar (Workspace) -->
     <div id="sidebar" class="sidebar">
-      <div>
-        <div class="d-flex justify-content-between align-items-center p-3">
-          <div id="workspace-section" class="d-flex align-items-center">
-            <i class="fas fa-table me-2"></i>
-            <span class="fw-bold">Workspace</span>
+        <div>
+          <div class="d-flex justify-content-between align-items-center p-3">
+            <div id="workspace-section" class="d-flex align-items-center">
+              <i class="fas fa-table me-2"></i>
+              <span class="fw-bold">Workspace</span>
+            </div>
+            <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()" title="Minimizar">
+              <i id="toggle-icon" class="fas fa-chevron-left"></i>
+            </button>
           </div>
-          <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()" title="Minimizar">
-            <i id="toggle-icon" class="fas fa-chevron-left"></i>
-          </button>
+  
+          <div id="menu-items" class="mt-2">
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-th-large me-3" style="font-size: 20px;"></i>
+                <span>Visão Geral</span>
+              </div>
+            </a>
+            <a href="../painelworkspace.html" class="text-decoration-none text-white menu-item" data-name="Voltar">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                <span>Voltar</span>
+              </div>
+            </a>
+            <a href="./viewtasks.html" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-list-ul me-3" style="font-size: 20px;"></i>
+                <span>Tarefas</span>
+              </div>
+            </a>
+            <a href="../time/viewtime.html" class="text-decoration-none text-white menu-item" data-name="Equipa">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                <span>Equipa</span>
+              </div>
+            </a>
+            <a href="../comunicacao/chat.html" class="text-decoration-none text-white menu-item" data-name="Comunicações">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-comment me-3" style="font-size: 20px;"></i>
+                <span>Comunicações</span>
+              </div>
+            </a>
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Relatórios">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                <span>Relatórios</span>
+              </div>
+            </a>
+            <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                <span>Configurações</span>
+              </div>
+            </a>
+            <a href="/workspace/permissoes" class="text-decoration-none text-white menu-item" data-name="Permissões">
+              <div class="d-flex align-items-center py-3 px-3">
+                <i class="fas fa-folder me-3" style="font-size: 20px;"></i>
+                <span>Permissões</span>
+              </div>
+            </a>
+          </div>
         </div>
-
-        <div id="menu-items" class="mt-2">
-          <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+  
+        <div class="mt-auto mb-3">
+          <a href="../../../../index.html" class="text-decoration-none text-white">
             <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-th-large me-3" style="font-size: 20px;"></i>
-              <span>Visão Geral</span>
-            </div>
-          </a>
-          <a href="../painelworkspace.html" class="text-decoration-none text-white menu-item" data-name="Voltar">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
-              <span>Voltar</span>
-            </div>
-          </a>
-          <a href="./tasks.html" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-list-ul me-3" style="font-size: 20px;"></i>
-              <span>Tarefas</span>
-            </div>
-          </a>
-          <a href="../time/viewtime.html" class="text-decoration-none text-white menu-item" data-name="Equipa">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-users me-3" style="font-size: 20px;"></i>
-              <span>Equipa</span>
-            </div>
-          </a>
-          <a href="../comunicacao/chat.html" class="text-decoration-none text-white menu-item" data-name="Comunicações">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-comment me-3" style="font-size: 20px;"></i>
-              <span>Comunicações</span>
-            </div>
-          </a>
-          <a href="#" class="text-decoration-none text-white menu-item" data-name="Relatórios">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
-              <span>Relatórios</span>
-            </div>
-          </a>
-          <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
-              <span>Configurações</span>
-            </div>
-          </a>
-          <a href="#" class="text-decoration-none text-white menu-item" data-name="Permissões">
-            <div class="d-flex align-items-center py-3 px-3">
-              <i class="fas fa-folder me-3" style="font-size: 20px;"></i>
-              <span>Permissões</span>
+              <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+              <span>Sair</span>
             </div>
           </a>
         </div>
       </div>
-
-      <div class="mt-auto mb-3">
-        <a href="../../../../index.html" class="text-decoration-none text-white">
-          <div class="d-flex align-items-center py-3 px-3">
-            <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
-            <span>Sair</span>
-          </div>
-        </a>
-      </div>
-    </div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="row">
+    
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-12 col-lg-10 col-xl-8">
+          <div class=" ">
             <!-- Task Card -->
             <div class="card task-card">
               <!-- Header -->
-              <div class="task-header">
+              <div class="task-header text-dark bg-light">
                 <h2 class="mb-0">
                   <i class="fas fa-tasks me-3"></i>
                   Detalhes da Tarefa
                 </h2>
                 <p class="mb-0 mt-2 opacity-75">ID: #TSK-2025-001</p>
               </div>
-
               <!-- Body -->
               <div class="task-body">
                 <!-- Informações Principais -->
@@ -368,82 +368,6 @@
   <script  src="../../../../public/assets/js/bootstrap.min.js"></script>
   <script src="../../../../public/assets/js/bootstrap.bundle.min.js"></script>
   <script src="../../../../public/assets/js/sidbar.js"></script>
-  <script>
-    // Toggle Sidebar
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const toggleIcon = document.getElementById('toggle-icon');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      if (window.innerWidth <= 768) {
-        // Mobile behavior
-        sidebar.classList.toggle('show');
-        mobileMenu.classList.toggle('d-none');
-      } else {
-        // Desktop behavior
-        sidebar.classList.toggle('collapsed');
-        if (sidebar.classList.contains('collapsed')) {
-          toggleIcon.classList.replace('fa-chevron-left', 'fa-chevron-right');
-        } else {
-          toggleIcon.classList.replace('fa-chevron-right', 'fa-chevron-left');
-        }
-      }
-    }
-    // Hide mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = event.target.closest('[onclick="toggleSidebar()"]');
-      
-      if (!toggleBtn && !mobileMenu.contains(event.target) && !sidebar.contains(event.target)) {
-        mobileMenu.classList.add('d-none');
-        if (window.innerWidth <= 768) {
-          sidebar.classList.remove('show');
-        }
-      }
-    });
-
-    // Action Functions
-    function downloadTask() {
-      // Simula o download do PDF
-      const taskTitle = document.querySelector('.field-value').textContent;
-      alert(`Iniciando download do PDF da tarefa: "${taskTitle}"`);
-      
-      // Aqui você implementaria a lógica real de geração do PDF
-      // Por exemplo, usando bibliotecas como jsPDF ou html2pdf
-    }
-
-    function editTask() {
-      // Redireciona para a página de edição
-      const confirmation = confirm('Deseja editar esta tarefa?');
-      if (confirmation) {
-        // window.location.href = 'edit-task.html?id=TSK-2025-001';
-        alert('Redirecionando para edição da tarefa...');
-      }
-    }
-
-    function deleteTask() {
-      // Confirma a exclusão
-      const confirmation = confirm('Tem certeza que deseja apagar esta tarefa? Esta ação não pode ser desfeita.');
-      if (confirmation) {
-        const secondConfirmation = confirm('Esta ação é irreversível. Confirma a exclusão?');
-        if (secondConfirmation) {
-          alert('Tarefa apagada com sucesso!');
-          // window.location.href = 'tasks.html';
-        }
-      }
-    }
-
-    // Window resize handler
-    window.addEventListener('resize', function() {
-      const sidebar = document.getElementById('sidebar');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      if (window.innerWidth > 768) {
-        sidebar.classList.remove('show');
-        mobileMenu.classList.add('d-none');
-      }
-    });
-  </script>
+ 
 </body>
 </html>
