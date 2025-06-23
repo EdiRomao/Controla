@@ -1,0 +1,39 @@
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+/* referente as tarefas*/
+
+.text-success { color: #28a745 !important; }
+.text-danger { color: #dc3545 !important; }
+.text-warning { color: #ffc107 !important; }
+.bg-light { background-color: #f8f9fa !important; }
+.shadow-sm { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; }
+.border-0 { border: 0 !important; }
+.rounded-0 { border-radius: 0 !important; }
+.fw-medium { font-weight: 500 !important; }
+.badge { padding: .25em .4em; font-size: .75em; }
+
+
+/* referente as tarefas*/
+
+.shadow-sm { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; }
+    .border-0 { border: 0 !important; }
+    .bg-light { background-color: #f8f9fa !important; }
+    .text-secondary { color: #6c757d !important; }

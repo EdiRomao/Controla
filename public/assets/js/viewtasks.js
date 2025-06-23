@@ -56,6 +56,11 @@ const orderData = [
                 <div class="row mb-2"><div class="col-4">Início:</div><div class="col-8 fw-bold">${item.Início}</div></div>
                 <div class="row mb-2"><div class="col-4">Prazo:</div><div class="col-8 fw-bold">${item.Prazo}</div></div>
               </div>
+                <div class="card-footer d-flex justify-content-between">
+                <button class="btn btn-primary btn-sm" onclick="viewTask(${item.id})">Visualizar</button>
+                <button class="btn btn-warning btn-sm" onclick="editTask(${item.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteTask(${item.id})">Apagar</button>
+                </div>
             </div>
           </div>
         `;
@@ -76,6 +81,29 @@ const orderData = [
             <td class="py-3">${item.Início}</td>
             <td class="py-3">${item.Prazo}</td>
             <td class="py-3"><a href="#" class="text-success"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></a></td>
+            
+            <td class="py-3">
+              <button class="btn btn-link p-0" onclick="viewTask(${item.id})" title="Visualizar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 4.5C8.5 4.5 5.5 7.5 3 12c2.5 4.5 5.5 7.5 9 7.5s6.5-3 9-7.5c-2.5-4.5-5.5-7.5-9-7.5z"/>
+                <path d="M12 9.5c1.5 0 2.5 1 2.5 2.5S13.5 14.5 12 14.5 9.5 13.5 9.5 12 10.5 9.5 12 9.5z"/>
+              </svg>
+              </button>
+              <button class="btn btn-link p-0" onclick="editTask(${item.id})" title="Editar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5l4 4-1.5 1.5-4-4z"/>
+                <path d="M3 21v-3.5l12-12 3.5 3.5-12 12H3z"/>
+              </svg>
+              </button>
+              <button class="btn btn-link p-0" onclick="deleteTask(${item.id})" title="Apagar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18"/>
+                <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6"/>
+                <path d="M10 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              </button>
+            </td>
           </tr>
         `;
       }

@@ -28,16 +28,19 @@ const membros = [
             </span>
           </td>
           <td class="py-3">
-            <button class="btn btn-link text-decoration-none" type="button" onclick="editMember(${membro.id})">Editar</button>
+          <a href="#" class="text-decoration-none" onclick="editMember(${membro.id})">
+            <i class="fas fa-edit" " title="Editar"></i>
+          </a>
+          <a href="#" class="text-decoration-none" onclick="viewMember(${membro.id})">
+            <i class="fas fa-eye text-success" title="Visualizar"></i>
+          </a>
+          <a href="#" class="text-decoration-none" onclick="removeMember(${membro.id})">
+            <i class="fas fa-trash text-danger" title="Remover"></i>
+          </a>
           </td>
-          <td class="py-3">
-            <div class="d-flex">
-              <div class="d-flex flex-column">
-                <button class="btn btn-link text-decoration-none p-0 text-start" type="button" onclick="editMember(${membro.id})">Editar</button>
-                <button class="btn btn-link text-decoration-none p-0 text-start" type="button" onclick="removeMember(${membro.id})">Remover</button>
-              </div>
-            </div>
-          </td>
+          </span>
+        </td>
+         
         </tr>
       `;
     });
