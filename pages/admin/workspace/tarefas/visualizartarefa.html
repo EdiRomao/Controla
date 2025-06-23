@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Tarefa - Workspace</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../../../public/assets/css/bootstrap.min.css">
+  <!-- tarefas CSS -->
+  <link rel="stylesheet" href="../../../../public/assets/css/task.css">
+
+  <!-- nav CSS --> 
+  <link rel="stylesheet" href="../../../../public/assets/css/nav.css"> 
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Botão de menu móvel -->
+        <button class="btn btn-sm border-0 d-md-none text-white" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+          <i class="fas fa-bars" style="font-size: 24px;"></i>
+        </button>
+
+        <!-- Navegação para telas médias e grandes -->
+        <div class="d-none d-md-flex align-items-center">
+          <a href="/usuarios" class="nav-link me-4">
+            <i class="fas fa-users" style="font-size: 24px;"></i>
+          </a>
+          <a href="/calendario" class="nav-link me-4">
+            <i class="fas fa-calendar" style="font-size: 24px;"></i>
+          </a>
+          <a href="/documentos" class="nav-link me-4">
+            <i class="fas fa-file-alt" style="font-size: 24px;"></i>
+          </a>
+          <a href="/workspace/comunicacao" class="nav-link me-3">
+            <i class="fas fa-comment" style="font-size: 22px;"></i>
+          </a>
+        </div>
+
+        <!-- Utilitários e perfil -->
+        <div class="d-none d-md-flex align-items-center">
+          <a href="/ajuda" class="nav-link d-flex align-items-center me-4">
+            <i class="fas fa-question-circle" style="font-size: 24px;"></i>
+          </a>
+          <a href="/pesquisar" class="nav-link d-flex align-items-center me-4">
+            <i class="fas fa-search" style="font-size: 24px;"></i>
+          </a>
+          <a href="/notificacoes" class="nav-link d-flex align-items-center me-4">
+            <i class="fas fa-bell" style="font-size: 24px;"></i>
+          </a>
+          <a href="/perfil" class="nav-link d-flex align-items-center me-4">
+            <i class="fas fa-user" style="font-size: 24px;"></i>
+          </a>
+          <a href="../../../../index.html" class="nav-link me-4">
+            <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
+          </a>
+          <span id="empresa-nome" class="empresa-nome ms-2">Minha Empresa</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu position-absolute start-0 top-100 p-3 d-none">
+      <div class="row">
+        <div class="col-12 mb-3 border-bottom pb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <span id="mobile-empresa-nome" class="fw-bold">Minha Empresa</span>
+          </div>
+        </div>
+
+        <div class="col-6 mb-3">
+          <div class="fw-bold mb-2">Navegação</div>
+          <a href="/usuarios" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-users me-2" style="font-size: 20px;"></i>
+            <span>Usuários</span>
+          </a>
+          <a href="/calendario" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-calendar me-2" style="font-size: 20px;"></i>
+            <span>Calendário</span>
+          </a>
+          <a href="/documentos" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-file-alt me-2" style="font-size: 20px;"></i>
+            <span>Documentos</span>
+          </a>
+        </div>
+
+        <div class="col-6 mb-3">
+          <div class="fw-bold mb-2">Utilitários</div>
+          <a href="/ajuda" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-question-circle me-2" style="font-size: 20px;"></i>
+            <span>Ajuda</span>
+          </a>
+          <a href="/pesquisar" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-search me-2" style="font-size: 20px;"></i>
+            <span>Pesquisar</span>
+          </a>
+          <a href="/notificacoes" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-bell me-2" style="font-size: 20px;"></i>
+            <span>Notificações</span>
+          </a>
+          <a href="/perfil" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-user me-2" style="font-size: 20px;"></i>
+            <span>Perfil</span>
+          </a>
+          <a href="/mensagens" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none">
+            <i class="fas fa-comment me-2" style="font-size: 20px;"></i>
+            <span>Mensagens</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Wrapper para Sidebar e Conteúdo -->
+  <div class="wrapper">
+    <!-- Sidebar (Workspace) -->
+    <div id="sidebar" class="sidebar">
+      <div>
+        <div class="d-flex justify-content-between align-items-center p-3">
+          <div id="workspace-section" class="d-flex align-items-center">
+            <i class="fas fa-table me-2"></i>
+            <span class="fw-bold">Workspace</span>
+          </div>
+          <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()" title="Minimizar">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+          </button>
+        </div>
+
+        <div id="menu-items" class="mt-2">
+          <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-th-large me-3" style="font-size: 20px;"></i>
+              <span>Visão Geral</span>
+            </div>
+          </a>
+          <a href="../painelworkspace.html" class="text-decoration-none text-white menu-item" data-name="Voltar">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+              <span>Voltar</span>
+            </div>
+          </a>
+          <a href="./tasks.html" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-list-ul me-3" style="font-size: 20px;"></i>
+              <span>Tarefas</span>
+            </div>
+          </a>
+          <a href="../time/viewtime.html" class="text-decoration-none text-white menu-item" data-name="Equipa">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+              <span>Equipa</span>
+            </div>
+          </a>
+          <a href="../comunicacao/chat.html" class="text-decoration-none text-white menu-item" data-name="Comunicações">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-comment me-3" style="font-size: 20px;"></i>
+              <span>Comunicações</span>
+            </div>
+          </a>
+          <a href="#" class="text-decoration-none text-white menu-item" data-name="Relatórios">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+              <span>Relatórios</span>
+            </div>
+          </a>
+          <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+              <span>Configurações</span>
+            </div>
+          </a>
+          <a href="#" class="text-decoration-none text-white menu-item" data-name="Permissões">
+            <div class="d-flex align-items-center py-3 px-3">
+              <i class="fas fa-folder me-3" style="font-size: 20px;"></i>
+              <span>Permissões</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-auto mb-3">
+        <a href="../../../../index.html" class="text-decoration-none text-white">
+          <div class="d-flex align-items-center py-3 px-3">
+            <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+            <span>Sair</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+            <!-- Task Card -->
+            <div class="card task-card">
+              <!-- Header -->
+              <div class="task-header">
+                <h2 class="mb-0">
+                  <i class="fas fa-tasks me-3"></i>
+                  Detalhes da Tarefa
+                </h2>
+                <p class="mb-0 mt-2 opacity-75">ID: #TSK-2025-001</p>
+              </div>
+
+              <!-- Body -->
+              <div class="task-body">
+                <!-- Informações Principais -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Informações Principais
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Título da Tarefa</div>
+                      <div class="field-value">Desenvolvimento do Sistema de Gestão</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Tipo de Tarefa</div>
+                      <div class="field-value">Desenvolvimento</div>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <div class="field-label">Descrição</div>
+                      <div class="field-value">
+                        Implementar funcionalidades de gestão de tarefas com interface responsiva e integração com API REST para controle completo do workflow da empresa.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Status e Prioridade -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-flag me-2"></i>
+                    Status e Prioridade
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Prioridade</div>
+                      <div class="field-value">
+                        <span class="priority-badge priority-alta">
+                          <i class="fas fa-exclamation-triangle me-1"></i>
+                          Alta
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Status</div>
+                      <div class="field-value">
+                        <span class="status-badge status-progresso">
+                          <i class="fas fa-clock me-1"></i>
+                          Em Progresso
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Datas -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-calendar me-2"></i>
+                    Cronograma
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Data de Início</div>
+                      <div class="field-value">
+                        <i class="fas fa-play-circle me-2 text-success"></i>
+                        15/01/2025
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Data de Entrega</div>
+                      <div class="field-value">
+                        <i class="fas fa-flag-checkered me-2 text-primary"></i>
+                        30/01/2025
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Equipe -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-users me-2"></i>
+                    Equipe Responsável
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Responsável Principal</div>
+                      <div class="field-value">
+                        <i class="fas fa-user-tie me-2 text-primary"></i>
+                        João Silva
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="field-label">Colaboradores Envolvidos</div>
+                      <div class="field-value">
+                        <i class="fas fa-users me-2 text-info"></i>
+                        Maria Santos, Pedro Costa, Ana Oliveira
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Projeto -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-project-diagram me-2"></i>
+                    Projeto Associado
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-12 mb-3">
+                      <div class="field-label">Cliente/Projeto</div>
+                      <div class="field-value">
+                        <i class="fas fa-building me-2 text-warning"></i>
+                        Sistema Corporativo - Cliente XYZ
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Observações -->
+                <div class="field-group">
+                  <h5 class="mb-3" style="color: var(--primary-color);">
+                    <i class="fas fa-sticky-note me-2"></i>
+                    Observações Internas
+                  </h5>
+                  <div class="field-value">
+                    Tarefa crítica para o projeto. Necessário coordenação com equipe de UX/UI. Reunião de acompanhamento agendada para quarta-feira às 14h.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="action-buttons">
+                <div class="d-flex flex-wrap justify-content-center">
+                  <button class="btn btn-action btn-download" onclick="downloadTask()">
+                    <i class="fas fa-download me-2"></i>
+                    Baixar PDF
+                  </button>
+                  <button class="btn btn-action btn-edit" onclick="editTask()">
+                    <i class="fas fa-edit me-2"></i>
+                    Editar Tarefa
+                  </button>
+                  <button class="btn btn-action btn-delete" onclick="deleteTask()">
+                    <i class="fas fa-trash me-2"></i>
+                    Apagar Tarefa
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script  src="../../../../public/assets/js/bootstrap.min.js"></script>
+  <script src="../../../../public/assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../../public/assets/js/sidbar.js"></script>
+  <script>
+    // Toggle Sidebar
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleIcon = document.getElementById('toggle-icon');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (window.innerWidth <= 768) {
+        // Mobile behavior
+        sidebar.classList.toggle('show');
+        mobileMenu.classList.toggle('d-none');
+      } else {
+        // Desktop behavior
+        sidebar.classList.toggle('collapsed');
+        if (sidebar.classList.contains('collapsed')) {
+          toggleIcon.classList.replace('fa-chevron-left', 'fa-chevron-right');
+        } else {
+          toggleIcon.classList.replace('fa-chevron-right', 'fa-chevron-left');
+        }
+      }
+    }
+    // Hide mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = event.target.closest('[onclick="toggleSidebar()"]');
+      
+      if (!toggleBtn && !mobileMenu.contains(event.target) && !sidebar.contains(event.target)) {
+        mobileMenu.classList.add('d-none');
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('show');
+        }
+      }
+    });
+
+    // Action Functions
+    function downloadTask() {
+      // Simula o download do PDF
+      const taskTitle = document.querySelector('.field-value').textContent;
+      alert(`Iniciando download do PDF da tarefa: "${taskTitle}"`);
+      
+      // Aqui você implementaria a lógica real de geração do PDF
+      // Por exemplo, usando bibliotecas como jsPDF ou html2pdf
+    }
+
+    function editTask() {
+      // Redireciona para a página de edição
+      const confirmation = confirm('Deseja editar esta tarefa?');
+      if (confirmation) {
+        // window.location.href = 'edit-task.html?id=TSK-2025-001';
+        alert('Redirecionando para edição da tarefa...');
+      }
+    }
+
+    function deleteTask() {
+      // Confirma a exclusão
+      const confirmation = confirm('Tem certeza que deseja apagar esta tarefa? Esta ação não pode ser desfeita.');
+      if (confirmation) {
+        const secondConfirmation = confirm('Esta ação é irreversível. Confirma a exclusão?');
+        if (secondConfirmation) {
+          alert('Tarefa apagada com sucesso!');
+          // window.location.href = 'tasks.html';
+        }
+      }
+    }
+
+    // Window resize handler
+    window.addEventListener('resize', function() {
+      const sidebar = document.getElementById('sidebar');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove('show');
+        mobileMenu.classList.add('d-none');
+      }
+    });
+  </script>
+</body>
+</html>

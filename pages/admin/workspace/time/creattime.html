@@ -206,7 +206,7 @@
     <div class="row mb-4">
       <div class="col-12">
         <div class="d-flex align-items-center">
-          <a href="workspace/equipa" class="text-decoration-none">
+          <a href="../painelworkspace.html" class="text-decoration-none">
             <div class="d-flex align-items-center text-dark">
               <svg class="me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -214,7 +214,7 @@
               <span>Voltar</span>
             </div>
           </a>
-          <h1 class="fw-bold ms-4 mb-0 fs-4">Adicionar Novo Time</h1>
+          <h1 class="fw-bold ms-4 mb-0 fs-4">Adicionar Novo Membro</h1>
           <hr>
         </div>
       </div>
@@ -224,53 +224,14 @@
     <div class="row">
       <div class="col-12">
         <div class="card border-0 shadow-sm p-4 mb-4">
-          <h5 class="mb-3">Informações do Time</h5>
-          <div class="row g-3 mb-4">
-            <div class="col-md-6">
-              <label for="nome" class="form-label">Nome do Time</label>
-              <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Time de Desenvolvimento">
-            </div>
-            <div class="col-md-6">
-              <label for="responsavel" class="form-label">Responsável</label>
-              <select class="form-select" id="responsavel" name="responsavel">
-                <option value="">Selecionar Responsável</option>
-                <option value="Jose Matos">José Matos</option>
-                <option value="Barroso André">Barroso André</option>
-                <option value="Raquel Domingos">Raquel Domingos</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="departamento" class="form-label">Departamento</label>
-              <select class="form-select" id="departamento" name="departamento">
-                <option value="">Selecionar Departamento</option>
-                <option value="Tecnologia">Tecnologia</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Vendas">Vendas</option>
-                <option value="Administrativo">Administrativo</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="status" class="form-label">Status</label>
-              <select class="form-select" id="status">
-                <option value="ativo">Ativo</option>
-                <option value="inativo">Inativo</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label for="descricao" class="form-label">Descrição</label>
-              <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descreva o propósito e objetivo deste time"></textarea>
-            </div>
-          </div>
-
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="mb-0">Membros do Time</h5>
+            <h5 class="mb-0">Membros da Empresa</h5>
             <button class="btn text-white px-3 py-2" style="background-color: #00565a; border-radius: 4px;" onclick="adicionarMembro()">+ Adicionar Membro</button>
           </div>
-
           <div id="membrosContainer">
             <div class="card mb-3 border p-3" data-id="1">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="mb-0">Membro #1</h6>
+                <h6 class="mb-0"></h6>
                 <button class="btn btn-light btn-sm" onclick="removerMembro(1)" disabled>Remover</button>
               </div>
               <div class="row g-3">
@@ -287,8 +248,19 @@
                   <input type="email" class="form-control" name="email_1" placeholder="email@empresa.com">
                 </div>
                 <div class="col-md-6">
+                  <label for="status" class="form-label">Status</label>
+                  <select class="form-select" id="status">
+                    <option value="ativo">Ativo</option>
+                    <option value="inativo">Inativo</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
                   <label class="form-label">Telefone</label>
-                  <input type="text" class="form-control" name="telefone_1" placeholder="123 456 789">
+                  <input type="text" class="form-control" name="telefone" placeholder="000000000">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Senha</label>
+                  <input type="password" class="form-control" name="senha" placeholder="meu@gmail.com">
                 </div>
               </div>
             </div>

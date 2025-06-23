@@ -152,3 +152,201 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
+
+  /* css para visualizar a tarefa*/
+
+  .menu-item {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 10px;
+  }
+
+  .menu-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+  }
+
+  .menu-item.active {
+    background: rgba(255,255,255,0.2);
+    border-left: 4px solid #fff;
+  }
+
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f8f9fa;
+  }
+
+  /* Task Card Styles */
+  .task-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border: none;
+    overflow: hidden;
+  }
+
+  .task-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #007b7f 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .task-body {
+    padding: 2rem;
+  }
+
+  .field-group {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+  }
+
+  .field-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .field-value {
+    font-size: 1.1rem;
+    color: #333;
+    background: white;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+  }
+
+  .priority-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .priority-alta { background: #dc3545; color: white; }
+  .priority-media { background: #ffc107; color: #333; }
+  .priority-baixa { background: #28a745; color: white; }
+
+  .status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .status-pendente { background: #6c757d; color: white; }
+  .status-progresso { background: #17a2b8; color: white; }
+  .status-concluida { background: #28a745; color: white; }
+
+  /* Action Buttons */
+  .action-buttons {
+    background: #f8f9fa;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .btn-action {
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    margin: 0 0.5rem;
+  }
+
+  .btn-download {
+    background: #28a745;
+    color: white;
+  }
+
+  .btn-download:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  }
+
+  .btn-edit {
+    background: #ffc107;
+    color: #333;
+  }
+
+  .btn-edit:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  }
+
+  .btn-delete {
+    background: #dc3545;
+    color: white;
+  }
+
+  .btn-delete:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      z-index: 1000;
+      transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+      transform: translateX(0);
+    }
+
+    .main-content {
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .task-header {
+      padding: 1.5rem;
+    }
+
+    .task-body {
+      padding: 1.5rem;
+    }
+
+    .btn-action {
+      width: 100%;
+      margin: 0.25rem 0;
+    }
+  }
+
+  .mobile-menu {
+    background: rgba(0, 86, 90, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .mobile-nav-link {
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-link:hover {
+    color: #ccc !important;
+    transform: translateX(5px);
+  }
+
+  .empresa-nome {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
