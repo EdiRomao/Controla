@@ -6,24 +6,7 @@ let minimized = false;
     let clients = [];
     let alert = null;
 
-    function filterMenuItems() {
-      const restrictedRoutesForMember = ['Equipa', 'Documentos', 'Configurações', 'Permissões'];
-      const menuItems = document.querySelectorAll('#menu-items .menu-item');
-      menuItems.forEach(item => {
-        const name = item.getAttribute('data-name');
-        if (userRole === 'member' && restrictedRoutesForMember.includes(name)) {
-          item.style.display = 'none';
-        } else {
-          item.style.display = 'block';
-        }
-      });
-
-      const currentPath = window.location.pathname;
-      const restrictedPaths = ['/workspace/equipa', '/workspace/documentos', '/configuracao', '/workspace/permissoes'];
-      if (userRole === 'member' && restrictedPaths.includes(currentPath)) {
-        window.location.href = '/workspace';
-      }
-    }
+    
 
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
@@ -100,3 +83,25 @@ let minimized = false;
 
     // Adicionar evento de clique fora para fechar o menu
     document.addEventListener('mousedown', handleClickOutside);
+
+
+    function setActiveItem(element, itemName) {
+      // Remove active class from all menu items
+      document.querySelectorAll('.menu-item').forEach(item => {
+          item.classList.remove('active');
+      });
+      
+      // Add active class to clicked item
+      element.classList.add('active');
+      
+      // Update active item
+      activeItem = itemName;
+  }
+
+  // Set initial active item
+  document.addEventListener('DOMContentLoaded', function() {
+      const defaultActiveItem = document.querySelector('.menu-item');
+      if (defaultActiveItem) {
+          defaultActiveItem.classList.add('active');
+      }
+  });

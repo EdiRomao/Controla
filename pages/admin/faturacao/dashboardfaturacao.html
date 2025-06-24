@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Faturação - Controla</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="../../../public/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../public/assets/css/header.css" rel="stylesheet">
+    <link href="../../../public/assets/css/nav.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Front Awesome icons-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="../../../public/assets/js/chart.js" rel="stylesheet">
+    <link rel="stylesheet" href="../../../public/assets/css/dashfaturacao.css">
+    
+</head>
+
+
+<body>
+
+    <header class="py-2 px-3 shadow-sm header-bg">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Calendar Link -->
+                <a href="/calendario" class="text-decoration-none text-white me-4 d-flex align-items-center">
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Restam: 150 dias
+                </a>
+
+                <!-- Company Info -->
+                <a class="d-flex align-items-center text-decoration-none text-white" href="/dashfaturacao/perfil">
+                    <div class="d-none d-lg-block">
+                        <div class="fw-bold">Worten</div>
+                        <div class="small text-secondary">Administrador</div>
+                    </div>
+                </a>
+
+                <!-- Right Side Elements -->
+                <div class="d-flex align-items-center ms-auto">
+                    <!-- Search Bar -->
+                    <div class="position-relative me-4">
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar...">
+                        <i class="fas fa-search position-absolute search-icon"></i>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="position-relative me-4">
+                        <i class="fas fa-bell text-white"></i>
+                        <span class="position-absolute notification-badge badge rounded-pill bg-danger">3</span>
+                    </div>
+
+                    <!-- Account Link -->
+                    <div class="position-relative me-4">
+                        <a href="/dashfaturacao/conta" class="d-flex align-items-center justify-content-center text-decoration-none text-white">
+                            <i class="fas fa-user me-1"></i>
+                            <span class="text-white-custom">conta</span>
+                        </a>
+                    </div>
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center user-avatar">
+                                Wt
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/perfil">Perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/conta">Conta</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header> 
+
+    <div class="wrapper">
+
+        <!-- menu lateral side bar-->
+        <div id="sidebar" class="sidebar">
+            <div>
+                <div class="d-flex justify-content-between align-items-center p-3">
+                    <div id="workspace-section" class="d-flex align-items-center">
+                        <i class="fas fa-table me-2"></i>
+                        <span class="fw-bold">Faturação</span>
+                    </div>
+                    <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()"
+                        title="Minimizar">
+                        <i id="toggle-icon" class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+    
+                <div id="menu-items" class="mt-2">
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-tachometer-alt me-3" style="font-size: 20px;"></i>
+                            <span>Visão Geral</span>
+                        </div>
+                    </a>
+                    <a href="../painelprincipal.html" class="text-decoration-none text-white menu-item"
+                        data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                            <span>Voltar</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-clipboard-list me-3" style="font-size: 20px;"></i>
+                            <span>Facturas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                            <span>Pré - forma</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Equipa">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-comments me-3" style="font-size: 20px;"></i>
+                            <span>Guias</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Comunicações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                            <span>Encomendas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Relatórios">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file me-3" style="font-size: 20px;"></i>
+                            <span>Contactos</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Itens</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-chart-bar me-3" style="font-size: 20px;"></i>
+                            <span>Relatórios</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Configurações</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-auto mb-3">
+                    <a href="../../../../index.html" class="text-decoration-none text-white">
+                      <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+                        <span>Sair</span>
+                      </div>
+                    </a>
+                </div>
+            </div>
+        </div>   
+    <!-- conteudo do menu principal da faturação-->
+    <div class="container-fluid p-4">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Summary Cards -->
+                <div class="row mb-4 g-3">
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="card-subtitle text-muted">Faturação Hoje</h6>
+                                    <div class="icon-circle bg-success bg-opacity-10">
+                                        <i data-lucide="credit-card" class="text-success"></i>
+                                    </div>
+                                </div>
+                                <h2 class="card-title mb-0 fw-bold">75.000,00 KZ</h2>
+                                <p class="card-text mt-2 mb-0 text-success">
+                                    <small>+12% em relação à ontem</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="card-subtitle text-muted">Faturação Mensal</h6>
+                                    <div class="icon-circle bg-primary bg-opacity-10">
+                                        <i data-lucide="file-text" class="text-primary"></i>
+                                    </div>
+                                </div>
+                                <h2 class="card-title mb-0 fw-bold">450.000,00 KZ</h2>
+                                <p class="card-text mt-2 mb-0 text-primary">
+                                    <small>+8% em relação ao mês anterior</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="card-subtitle text-muted">Total de Clientes</h6>
+                                    <div class="icon-circle bg-warning bg-opacity-10">
+                                        <i data-lucide="users" class="text-warning"></i>
+                                    </div>
+                                </div>
+                                <h2 class="card-title mb-0 fw-bold">142</h2>
+                                <p class="card-text mt-2 mb-0 text-warning">
+                                    <small>+5 novos este mês</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="card-subtitle text-muted">Faturas Pendentes</h6>
+                                    <div class="icon-circle bg-danger bg-opacity-10">
+                                        <i data-lucide="file-text" class="text-danger"></i>
+                                    </div>
+                                </div>
+                                <h2 class="card-title mb-0 fw-bold">16</h2>
+                                <p class="card-text mt-2 mb-0 text-danger">
+                                    <small>125.000,00 KZ em atraso</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row mb-4 g-3">
+                    <div class="col-md-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h5 class="card-title">Evolução de Faturação</h5>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Últimos 6 meses
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Últimos 3 meses</a></li>
+                                            <li><a class="dropdown-item" href="#">Último ano</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="revenueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h5 class="card-title">Tipos de Clientes</h5>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Este Ano
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Último ano</a></li>
+                                            <li><a class="dropdown-item" href="#">Total</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="clientChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Faturas Recentes</h5>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item border-0 px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Worten</h6>
+                                            <p class="text-muted mb-0 small">Fatura #2435 | 17/04/2025</p>
+                                        </div>
+                                        <span class="badge bg-success rounded-pill">Paga</span>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Jelson Silva</h6>
+                                            <p class="text-muted mb-0 small">Fatura #2434 | 16/04/2025</p>
+                                        </div>
+                                        <span class="badge bg-success rounded-pill">Paga</span>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Afriquimica</h6>
+                                            <p class="text-muted mb-0 small">Fatura #2433 | 15/04/2025</p>
+                                        </div>
+                                        <span class="badge bg-warning rounded-pill">Pendente</span>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Ana Paula Dias</h6>
+                                            <p class="text-muted mb-0 small">Fatura #2432 | 14/04/2025</p>
+                                        </div>
+                                        <span class="badge bg-success rounded-pill">Paga</span>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">André Filipe</h6>
+                                            <p class="text-muted mb-0 small">Fatura #2431 | 13/04/2025</p>
+                                        </div>
+                                        <span class="badge bg-danger rounded-pill">Atrasada</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <button class="btn btn-sm btn-outline-primary d-block w-100">Ver todas as faturas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Agendamentos Próximos</h5>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item border-0 px-0">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 p-3 me-3 rounded">
+                                                <i data-lucide="calendar" class="text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Reunião com Worten</h6>
+                                                <p class="text-muted mb-0 small">18/04/2025 | 10:00 - 11:30</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 p-3 me-3 rounded">
+                                                <i data-lucide="calendar" class="text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Visita técnica - OMR</h6>
+                                                <p class="text-muted mb-0 small">19/04/2025 | 14:00 - 16:00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item border-0 px-0">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 p-3 me-3 rounded">
+                                                <i data-lucide="calendar" class="text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-1">Entrega - André Filipe</h6>
+                                                <p class="text-muted mb-0 small">20/04/2025 | 09:00 - 10:00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <button class="btn btn-sm btn-outline-primary d-block w-100">Ver todos os agendamentos</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Status de Faturas</h5>
+                                <div class="chart-container" style="height: 240px;">
+                                    <canvas id="invoiceChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <h5 class="mb-0 fw-bold">352</h5>
+                                        <p class="text-success mb-0 small">Pagas</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="mb-0 fw-bold">70</h5>
+                                        <p class="text-warning mb-0 small">Pendentes</p>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="mb-0 fw-bold">12</h5>
+                                        <p class="text-danger mb-0 small">Atrasadas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Sidebar -->
+            <div class="col-lg-3 quick-actions">
+                <div class="sticky-top" style="top: 1rem;">
+                    <!-- New Invoice Button -->
+                    <button class="btn btn-teal w-100 py-3 mb-3 d-flex align-items-center justify-content-center">
+                        <i data-lucide="plus" class="me-2"></i>
+                        Nova factura
+                    </button>
+
+                    <!-- Action Cards -->
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button class="list-group-item list-group-item-action p-3 d-flex align-items-center text-teal border-0">
+                            <i data-lucide="receipt" class="me-2"></i>
+                            Nova Pré-forma
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button class="list-group-item list-group-item-action p-3 d-flex align-items-center text-teal border-0">
+                            <i data-lucide="credit-card" class="me-2"></i>
+                            Nova Guia
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button class="list-group-item list-group-item-action p-3 d-flex align-items-center text-teal border-0">
+                            <i data-lucide="clock" class="me-2"></i>
+                            Nova Encomenda
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button class="list-group-item list-group-item-action p-3 d-flex align-items-center text-teal border-0">
+                            <i data-lucide="file-check" class="me-2"></i>
+                            Novo Contacto
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../../../public/assets/js/dashfaturacao.js"></script>
+    <script src="../../../public/assets/js/sidbar.js"></script>
+</body>
+</html>

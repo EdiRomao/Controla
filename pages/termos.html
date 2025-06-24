@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos e Condições</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .card h2 {
+            margin-bottom: 15px;
+        }
+        .card button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #0056b3;
+        }
+        .terms-content {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Termos e Condições</h2>
+    <p>Leia os termos e condições do nosso sistema de faturação e workspace.</p>
+    <button id="toggleTerms">Ver Termos e Condições</button>
+    <div class="terms-content" id="termsContent">
+        <h3>Termos e Condições</h3>
+        <p>Aqui estão os termos e condições do seu sistema...</p>
+        <!-- Adicione o conteúdo dos termos e condições aqui -->
+    </div>
+</div>
+
+<script>
+    document.getElementById('toggleTerms').onclick = function() {
+        var termsContent = document.getElementById('termsContent');
+        if (termsContent.style.display === "none" || termsContent.style.display === "") {
+            termsContent.style.display = "block";
+        } else {
+            termsContent.style.display = "none";
+        }
+    };
+</script>
+
+</body>
+</html>

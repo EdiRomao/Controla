@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Workspace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            background-color: #00565a;
+            width: 230px;
+            transition: width 0.3s;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .sidebar.minimized {
+            width: 70px;
+        }
+        
+        .sidebar-header {
+            padding: 1rem;
+        }
+        
+        .menu-item {
+            transition: background-color 0.2s;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .menu-item:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.25rem;
+        }
+        
+        .toggle-btn:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-text {
+            transition: opacity 0.3s;
+        }
+        
+        .sidebar.minimized .menu-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+        
+        .sidebar.minimized .sidebar-title {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar" class="sidebar text-white">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center sidebar-header">
+            <div class="d-flex align-items-center sidebar-title">
+                <i class="fas fa-list me-2"></i>
+                <span class="fw-bold">Factura & Relatório</span>
+            </div>
+            <div class="sidebar-icon-only d-none">
+                <i class="fas fa-list"></i>
+            </div>
+            <button class="toggle-btn" onclick="toggleSidebar()" type="button">
+                <i id="toggle-icon" class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="mt-2 flex-grow-1">
+            <a href="/dashfaturacao" class="menu-item d-block" onclick="setActiveItem(this, 'Visão Geral')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-tachometer-alt me-3"></i>
+                    <span class="menu-text">Visão Geral</span>
+                </div>
+            </a>
+            
+            <a href="/dashboard" class="menu-item d-block" onclick="setActiveItem(this, 'Voltar')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-arrow-left me-3"></i>
+                    <span class="menu-text">Voltar</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/facturas" class="menu-item d-block" onclick="setActiveItem(this, 'Facturas')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-clipboard-list me-3"></i>
+                    <span class="menu-text">Facturas</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/preforma" class="menu-item d-block" onclick="setActiveItem(this, 'Pró-formas')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-users me-3"></i>
+                    <span class="menu-text">Pró-formas</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/guias" class="menu-item d-block" onclick="setActiveItem(this, 'Guias')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-comments me-3"></i>
+                    <span class="menu-text">Guias</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/encomenda" class="menu-item d-block" onclick="setActiveItem(this, 'Encomendas')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-file-alt me-3"></i>
+                    <span class="menu-text">Encomendas</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/contactos" class="menu-item d-block" onclick="setActiveItem(this, 'Contactos')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-file me-3"></i>
+                    <span class="menu-text">Contactos</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/itens" class="menu-item d-block" onclick="setActiveItem(this, 'Itens')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-th me-3"></i>
+                    <span class="menu-text">Itens</span>
+                </div>
+            </a>
+            
+            <a href="/dashfaturacao/relatorio" class="menu-item d-block" onclick="setActiveItem(this, 'Relatórios')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-chart-bar me-3"></i>
+                    <span class="menu-text">Relatórios</span>
+                </div>
+            </a>
+            
+            <a href="/configuracao" class="menu-item d-block" onclick="setActiveItem(this, 'Configurações')">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-cog me-3"></i>
+                    <span class="menu-text">Configurações</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="mt-auto mb-3">
+            <a href="/login" class="menu-item d-block">
+                <div class="d-flex align-items-center py-3 px-3">
+                    <i class="fas fa-sign-out-alt me-3"></i>
+                    <span class="menu-text">Sair</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let minimized = false;
+        let activeItem = "Visão Geral";
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleIcon = document.getElementById('toggle-icon');
+            const sidebarTitle = document.querySelector('.sidebar-title');
+            const sidebarIconOnly = document.querySelector('.sidebar-icon-only');
+            
+            minimized = !minimized;
+            
+            if (minimized) {
+                sidebar.classList.add('minimized');
+                toggleIcon.className = 'fas fa-chevron-right';
+                sidebarTitle.classList.add('d-none');
+                sidebarIconOnly.classList.remove('d-none');
+            } else {
+                sidebar.classList.remove('minimized');
+                toggleIcon.className = 'fas fa-chevron-left';
+                sidebarTitle.classList.remove('d-none');
+                sidebarIconOnly.classList.add('d-none');
+            }
+        }
+
+        function setActiveItem(element, itemName) {
+            // Remove active class from all menu items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            element.classList.add('active');
+            
+            // Update active item
+            activeItem = itemName;
+        }
+
+        // Set initial active item
+        document.addEventListener('DOMContentLoaded', function() {
+            const defaultActiveItem = document.querySelector('.menu-item');
+            if (defaultActiveItem) {
+                defaultActiveItem.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

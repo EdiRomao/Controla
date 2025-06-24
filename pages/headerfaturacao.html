@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Faturação</title>
+    <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    
+    <header class="py-2 px-3 shadow-sm header-bg">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Calendar Link -->
+                <a href="/calendario" class="text-decoration-none text-white me-4 d-flex align-items-center">
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Restam: 150 dias
+                </a>
+
+                <!-- Company Info -->
+                <a class="d-flex align-items-center text-decoration-none text-white" href="/dashfaturacao/perfil">
+                    <div class="d-none d-lg-block">
+                        <div class="fw-bold">Worten</div>
+                        <div class="small text-secondary">Administrador</div>
+                    </div>
+                </a>
+
+                <!-- Right Side Elements -->
+                <div class="d-flex align-items-center ms-auto">
+                    <!-- Search Bar -->
+                    <div class="position-relative me-4">
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar...">
+                        <i class="fas fa-search position-absolute search-icon"></i>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="position-relative me-4">
+                        <i class="fas fa-bell text-white"></i>
+                        <span class="position-absolute notification-badge badge rounded-pill bg-danger">3</span>
+                    </div>
+
+                    <!-- Account Link -->
+                    <div class="position-relative me-4">
+                        <a href="/dashfaturacao/conta" class="d-flex align-items-center justify-content-center text-decoration-none text-white">
+                            <i class="fas fa-user me-1"></i>
+                            <span class="text-white-custom">conta</span>
+                        </a>
+                    </div>
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center user-avatar">
+                                Wt
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/perfil">Perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/conta">Conta</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile menu functionality (if needed)
+        let showMobileMenu = false;
+        
+        function toggleMobileMenu() {
+            showMobileMenu = !showMobileMenu;
+            // Add mobile menu logic here if needed
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('mousedown', function(event) {
+            // Add click outside logic here if needed
+        });
+    </script>
+</body>
+</html>

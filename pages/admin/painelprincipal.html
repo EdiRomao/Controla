@@ -30,6 +30,9 @@
           <i class="fas fa-user me-2" style="font-size: 28px;"></i>
           <span>Perfil</span>
             </a>
+            <a href="./painelprincipal.html" class="mobile-nav-link d-block py-2 d-flex align-items-center text-decoration-none mx-5">
+              <img src="../../public/assets/img/logo-white.png" alt="logo controla" width="150px">
+            </a>
         </div>
 
         <!-- Utilitários e perfil -->
@@ -44,7 +47,7 @@
             <a href="/mensagens" class="nav-link me-3 text-white">
                 <i class="fas fa-comment" style="font-size: 28px;"></i>
               </a>
-          <a href="/login" class="nav-link me-4 d-none d-md-block text-white">
+          <a href="../../index.html" class="nav-link me-4 d-none d-md-block text-white">
             <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i>
           </a>
 
@@ -66,12 +69,12 @@
           </button>
         </div>
 
-        <div id="workspace-section" class="workspace-section mb-4 px-3">
+        <!-- <div id="workspace-section" class="workspace-section mb-4 px-3">
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-box me-2"></i>
             <h5 class="mb-0">Controla</h5>
           </div>
-        </div>
+        </div> -->
 
         <div class="workspace-section mb-4">
           <a href="workspace/painelworkspace.html" class="text-decoration-none text-white">
@@ -83,7 +86,7 @@
         </div>
 
         <div class="workspace-section mb-4">
-          <a href="#" class="text-decoration-none text-white">
+          <a href="../admin/faturacao/dashboardfaturacao.html" class="text-decoration-none text-white">
             <div class="workspace-button d-flex flex-column align-items-center py-2">
               <i class="fas fa-chart-bar mb-2" style="font-size: 40px;"></i>
               <span class="fs-6">Facturação & Relatórios</span>
@@ -168,66 +171,6 @@
   <!-- Bootstrap JS and Popper -->
   <script src="../../public/assets/js/popper.min.js"></script>
   <script src="../../public/assets/js/bootstrap.min.js"></script>
-   <script>
-    let minimized = false;
-    let showMobileMenu = false;
-    let sidebarMobile = false;
-
-    
-
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const toggleIcon = document.getElementById('toggle-icon');
-      const workspaceSection = document.getElementById('workspace-section');
-      const titleSection = document.getElementById('sidebar-title');
-      const mainContent = document.querySelector('.main-content');
-
-      if (window.innerWidth < 768) {
-        sidebarMobile = !sidebarMobile;
-        sidebar.classList.toggle('active', sidebarMobile);
-        sidebar.classList.toggle('sidebar-mobile', sidebarMobile);
-      } else {
-        minimized = !minimized;
-        sidebar.classList.toggle('sidebar-mini', minimized);
-        if (minimized) {
-          toggleIcon.classList.remove('fa-chevron-left');
-          toggleIcon.classList.add('fa-chevron-right');
-          workspaceSection.style.display = 'none';
-          titleSection.style.display = 'none';
-          document.querySelectorAll('.workspace-button i').forEach(icon => {
-            icon.style.fontSize = '24px';
-          });
-        } else {
-          toggleIcon.classList.remove('fa-chevron-right');
-          toggleIcon.classList.add('fa-chevron-left');
-          workspaceSection.style.display = 'block';
-          titleSection.style.display = 'block';
-          document.querySelectorAll('.workspace-button i').forEach(icon => {
-            icon.style.fontSize = '40px';
-          });
-        }
-      }
-    }
-
-    function handleClickOutside(event) {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const sidebar = document.getElementById('sidebar');
-      if (mobileMenu && !mobileMenu.contains(event.target) && !event.target.closest('.btn')) {
-        showMobileMenu = false;
-        mobileMenu.classList.add('d-none');
-      }
-      if (sidebarMobile && sidebar && !sidebar.contains(event.target) && !event.target.closest('.btn')) {
-        sidebarMobile = false;
-        sidebar.classList.remove('active');
-        sidebar.classList.remove('sidebar-mobile');
-      }
-    }
-
-    // Carregar dados do usuário ao iniciar
-    fetchUserData();
-
-    // Adicionar evento de clique fora para fechar o menu
-    document.addEventListener('mousedown', handleClickOutside);
-  </script> 
+   <script src="../../public/assets/js/sidbar.js"></script> 
 </body>
 </html>

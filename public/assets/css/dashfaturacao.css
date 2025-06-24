@@ -1,0 +1,52 @@
+.bg-teal {
+    background-color: #00565a !important;
+}
+
+.text-teal {
+    color: #00565a !important;
+}
+
+.btn-teal {
+    background-color: #00565a;
+    border-color: #00565a;
+    color: white;
+}
+
+.btn-teal:hover {
+    background-color: #004448;
+    border-color: #004448;
+    color: white;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+.list-group-item-action:hover {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .quick-actions {
+        position: static !important;
+        margin-top: 2rem;
+    }
+}
