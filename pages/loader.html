@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader Controla</title>
+    
+</head>
+<body>
+    <div class="floating-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <div class="glow"></div>
+
+    <div class="loader-container" id="loader">
+        <div class="logo-container">
+            <div class="controla-logo">
+                <div class="c-letter"></div>
+                <div class="logo-text">ontrola</div>
+            </div>
+        </div>
+        
+        <div class="loading-text" id="loadingText">Carregando...</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <button class="demo-button" onclick="simulateLoading()">Simular Carregamento</button>
+
+    <script>
+        const loadingTexts = [
+            'Carregando...',
+            'Inicializando sistema...',
+            'Conectando...',
+            'Preparando interface...',
+            'Quase pronto...'
+        ];
+
+        let currentTextIndex = 0;
+
+        function updateLoadingText() {
+            const textElement = document.getElementById('loadingText');
+            textElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentTextIndex = (currentTextIndex + 1) % loadingTexts.length;
+                textElement.textContent = loadingTexts[currentTextIndex];
+                textElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Atualiza o texto de carregamento a cada 2 segundos
+        setInterval(updateLoadingText, 2000);
+
+        function simulateLoading() {
+            const loader = document.getElementById('loader');
+            const button = document.querySelector('.demo-button');
+            
+            // Esconde o botão durante o carregamento
+            button.style.opacity = '0';
+            button.style.pointerEvents = 'none';
+            
+            // Remove a classe loaded se existir
+            loader.classList.remove('loaded');
+            
+            // Simula carregamento por 4 segundos
+            setTimeout(() => {
+                loader.classList.add('loaded');
+                
+                // Mostra o botão novamente após a animação
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                    button.style.pointerEvents = 'auto';
+                    loader.classList.remove('loaded');
+                }, 1000);
+            }, 4000);
+        }
+
+        // Simulação automática inicial (opcional)
+        // setTimeout(simulateLoading, 2000);
+    </script>
+</body>
+</html>

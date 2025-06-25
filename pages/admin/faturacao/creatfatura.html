@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Factura - Sistema de Facturação</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="../../../public/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../public/assets/css/header.css" rel="stylesheet">
+    <link href="../../../public/assets/css/nav.css" rel="stylesheet">
+    <link href="../../../public/assets/css/global.css" rel="stylesheet">
+
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+  
+</head>
+<body>
+
+
+
+    <header class="py-2 px-3 shadow-sm header-bg">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Calendar Link -->
+                <a href="/calendario" class="text-decoration-none text-white me-4 d-flex align-items-center">
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Restam: 150 dias
+                </a>
+
+                <!-- Company Info -->
+                <a class="d-flex align-items-center text-decoration-none text-white" href="/dashfaturacao/perfil">
+                    <div class="d-none d-lg-block">
+                        <div class="fw-bold">Worten</div>
+                        <div class="small text-secondary">Administrador</div>
+                    </div>
+                </a>
+
+                <!-- Right Side Elements -->
+                <div class="d-flex align-items-center ms-auto">
+                    <!-- Search Bar -->
+                    <div class="position-relative me-4">
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar...">
+                        <i class="fas fa-search position-absolute search-icon"></i>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="position-relative me-4">
+                        <i class="fas fa-bell text-white"></i>
+                        <span class="position-absolute notification-badge badge rounded-pill bg-danger">3</span>
+                    </div>
+
+                    <!-- Account Link -->
+                    <div class="position-relative me-4">
+                        <a href="/dashfaturacao/conta" class="d-flex align-items-center justify-content-center text-decoration-none text-white">
+                            <i class="fas fa-user me-1"></i>
+                            <span class="text-white-custom">conta</span>
+                        </a>
+                    </div>
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center user-avatar">
+                                Wt
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/perfil">Perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/conta">Conta</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header> 
+    <div class="wrapper">
+        <div id="sidebar" class="sidebar">
+            <div>
+                <div class="d-flex justify-content-between align-items-center p-3">
+                    <div id="workspace-section" class="d-flex align-items-center">
+                        <i class="fas fa-table me-2"></i>
+                        <span class="fw-bold">Faturação</span>
+                    </div>
+                    <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()"
+                        title="Minimizar">
+                        <i id="toggle-icon" class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+    
+                <div id="menu-items" class="mt-2">
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-tachometer-alt me-3" style="font-size: 20px;"></i>
+                            <span>Visão Geral</span>
+                        </div>
+                    </a>
+                    <a href="../painelprincipal.html" class="text-decoration-none text-white menu-item"
+                        data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                            <span>Voltar</span>
+                        </div>
+                    </a>
+                    <a href="fatura.html" class="text-decoration-none text-white menu-item"
+                        data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-clipboard-list me-3" style="font-size: 20px;"></i>
+                            <span>Facturas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                            <span>Pré - forma</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Equipa">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-comments me-3" style="font-size: 20px;"></i>
+                            <span>Guias</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Comunicações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                            <span>Encomendas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Relatórios">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file me-3" style="font-size: 20px;"></i>
+                            <span>Contactos</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Itens</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-chart-bar me-3" style="font-size: 20px;"></i>
+                            <span>Relatórios</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item"
+                        data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Configurações</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-auto mb-3">
+                    <a href="../../../../index.html" class="text-decoration-none text-white">
+                      <div class="d-flex align-items-center py-3 px-3">
+                        <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+                        <span>Sair</span>
+                      </div>
+                    </a>
+                </div>
+            </div>
+        </div>   
+    <div class="container p-4 bg-light">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-9 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <!-- Alert Notice -->
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><i class="fas fa-exclamation-triangle me-2"></i>Atenção!</strong> Ainda não definiu o seu regime de IVA. Clique <a href="#" class="alert-link">aqui</a> para configurar.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <!-- Invoice Header -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-file-invoice me-2"></i>Nova factura
+                            </h5>
+                            <span class="text-muted"><i class="fas fa-asterisk me-1" style="font-size: 0.7em;"></i>Campos obrigatórios *</span>
+                        </div>
+
+                        <!-- Client Selection Section -->
+                        <div class="mb-4">
+                            <p><i class="fas fa-search me-2"></i>Pesquise por um cliente já existente ou <a href="#" class="text-decoration-none">insira</a> os dados para criar um novo contacto.</p>
+                            <div class="dropdown mb-4">
+                                <button class="btn btn-light dropdown-toggle w-100 text-start text-muted" type="button" id="clientDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user me-2"></i>Procurar ou criar novo contacto
+                                </button>
+                                <ul class="dropdown-menu w-100" aria-labelledby="clientDropdown">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Cliente 1</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Cliente 2</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Cliente 3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Document Details Section -->
+                        <div class="mb-4">
+                            <h6 class="mb-3"><i class="fas fa-file-alt me-2"></i>Detalhes do documento</h6>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-calendar me-1"></i>Data:</label>
+                                        <input type="date" class="form-control" value="2025-04-22">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-comment me-1"></i>Observações:</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-clock me-1"></i>Vencimento:</label>
+                                        <select class="form-select">
+                                            <option>45 dias</option>
+                                            <option>30 dias</option>
+                                            <option>60 dias</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-percent me-1"></i>Retenção (%):</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-tag me-1"></i>V/ Ref.:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-list-ol me-1"></i>Série:</label>
+                                        <select class="form-select">
+                                            <option>2025</option>
+                                            <option>2024</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="fas fa-coins me-1"></i>Moeda:</label>
+                                        <select class="form-select">
+                                            <option>Angolan kwanza (AOA)</option>
+                                            <option>Euro (EUR)</option>
+                                            <option>US Dollar (USD)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Items Section -->
+                        <div class="mb-4">
+                            <h6 class="mb-3"><i class="fas fa-shopping-cart me-2"></i>Itens *</h6>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th><i class="fas fa-barcode me-1"></i>Código</th>
+                                            <th><i class="fas fa-align-left me-1"></i>Descrição</th>
+                                            <th><i class="fas fa-euro-sign me-1"></i>Preço unitário</th>
+                                            <th><i class="fas fa-sort-numeric-up me-1"></i>Qtd.</th>
+                                            <th><i class="fas fa-percentage me-1"></i>Taxa/IVA</th>
+                                            <th><i class="fas fa-percentage me-1"></i>Desc.%</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="6" class="text-center py-4">
+                                                <p class="mb-3"><i class="fas fa-search me-2"></i>Pesquise por um item já existente ou <a href="#" class="text-decoration-none">insira</a> o novo código para criar um novo registo.</p>
+                                                <button class="btn custom-btn btn-sm" type="button">
+                                                    <i class="fas fa-plus me-1"></i>Adicionar Item
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Summary Section -->
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th><i class="fas fa-percentage me-1"></i>Taxa/IVA</th>
+                                                <th><i class="fas fa-chart-bar me-1"></i>Incidência</th>
+                                                <th><i class="fas fa-calculator me-1"></i>Valor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" class="text-center text-muted py-3">
+                                                    <i class="fas fa-inbox me-2"></i>Nenhum item adicionado
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th colspan="2"><i class="fas fa-receipt me-2"></i>Sumário</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><i class="fas fa-plus-circle me-1"></i>Soma:</td>
+                                                <td class="text-end">0,00 Kz</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-minus-circle me-1"></i>Desconto:</td>
+                                                <td class="text-end">0,00 Kz</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-calculator me-1"></i>S/Imposto/IVA/Com Desc.:</td>
+                                                <td class="text-end">0,00 Kz</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-percentage me-1"></i>Imposto/IVA:</td>
+                                                <td class="text-end">0,00 Kz</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-hand-holding-usd me-1"></i>Retenção:</td>
+                                                <td class="text-end">0,00 Kz</td>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <td><strong><i class="fas fa-dollar-sign me-1"></i>Total:</strong></td>
+                                                <td class="text-end"><strong>0,00 Kz</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Info -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <p class="mb-0">
+                                <i class="fas fa-calendar-check me-2"></i>Pagamento previsto pelo Controla para 22/10/2025
+                            </p>
+                            <div>
+                                <button class="btn btn-outline-secondary me-2" type="button">
+                                    <i class="fas fa-times me-1"></i>Cancelar
+                                </button>
+                                <button class="btn custom-btn" type="button">
+                                    <i class="fas fa-save me-1"></i>Guardar como rascunho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <!-- Help Panel -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-header bg-secondary bg-opacity-10 border-0">
+                        <h6 class="mb-0"><i class="fas fa-question-circle me-2"></i>Ajuda</h6>
+                    </div>
+                    <div class="card-body">
+                        <h6><i class="fas fa-user-plus me-2"></i>Novo Cliente?</h6>
+                        <p class="mb-0">Se este documento é para um novo cliente, basta preencher os campos "Dados do Cliente" e ao criar o documento o novo cliente será também criado.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Menu -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-header bg-secondary bg-opacity-10 border-0">
+                        <h6 class="mb-0"><i class="fas fa-cog me-2"></i>Definições</h6>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action text-success">
+                            <i class="fas fa-building me-2"></i>Dados da empresa
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-palette me-2"></i>Personalização de documentos
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-calculator me-2"></i>Impostos
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-list-ol me-2"></i>Séries
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <i class="fas fa-envelope me-2"></i>Template de mensagens
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Bootstrap JS -->
+    <script src="../../../public/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../public/assets/js/dashfaturacao.js"></script>
+    <!-- js do sidbar-->
+    <script src="../../../public/assets/js/sidbar.js"></script>
+
+</body>
+</html>

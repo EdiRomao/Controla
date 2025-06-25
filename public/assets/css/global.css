@@ -37,3 +37,101 @@
     .border-0 { border: 0 !important; }
     .bg-light { background-color: #f8f9fa !important; }
     .text-secondary { color: #6c757d !important; }
+
+
+/* css do dashboard de faturação na pagina fatura*/ 
+
+
+:root {
+    --primary-color: #00565a;
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary-custom:hover {
+    background-color: #004449;
+    border-color: #004449;
+}
+
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+.page-link.active-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.document-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 8px;
+}
+
+.sidebar-btn {
+    color: var(--primary-color);
+    border: none;
+    text-align: left;
+}
+
+.sidebar-btn:hover {
+    background-color: #f8f9fa;
+}
+
+/* style da fatura */
+
+.custom-btn {
+    background-color: #00565a;
+    color: white;
+    border: none;
+}
+
+.custom-btn:hover {
+    background-color: #004449;
+    color: white;
+}
+
+.card-title {
+    color: #00565a;
+}
+
+/*  */
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary-custom:hover {
+    background-color: #004448;
+    border-color: #004448;
+}
+
+.page-link-active {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.doc-type-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 8px;
+}
+
+.expired-date {
+    color: #f44336;
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Facturas</title>
+    <!-- Bootstrap CSS -->
+    <link href="../../../public/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../public/assets/css/header.css" rel="stylesheet">
+    <link href="../../../public/assets/css/nav.css" rel="stylesheet">
+    <link href="../../../public/assets/css/global.css" rel="stylesheet">
+    <link href="../../../public/assets/css/font/all.min.css" rel="stylesheet">
+    
+    <!-- icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="py-2 px-3 shadow-sm header-bg">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Calendar Link -->
+                <a href="/calendario" class="text-decoration-none text-white me-4 d-flex align-items-center">
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Restam: 150 dias
+                </a>
+
+                <!-- Company Info -->
+                <a class="d-flex align-items-center text-decoration-none text-white" href="/dashfaturacao/perfil">
+                    <div class="d-none d-lg-block">
+                        <div class="fw-bold">Worten</div>
+                        <div class="small text-secondary">Administrador</div>
+                    </div>
+                </a>
+                <!-- Right Side Elements -->
+                <div class="d-flex align-items-center ms-auto">
+                    <!-- Search Bar -->
+                    <div class="position-relative me-4">
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar...">
+                        <i class="fas fa-search position-absolute search-icon"></i>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="position-relative me-4">
+                        <i class="fas fa-bell text-white"></i>
+                        <span class="position-absolute notification-badge badge rounded-pill bg-danger">3</span>
+                    </div>
+
+                    <!-- Account Link -->
+                    <div class="position-relative me-4">
+                        <a href="/dashfaturacao/conta"
+                            class="d-flex align-items-center justify-content-center text-decoration-none text-white">
+                            <i class="fas fa-user me-1"></i>
+                            <span class="text-white-custom">conta</span>
+                        </a>
+                    </div>
+
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div
+                                class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center user-avatar">
+                                Wt
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/perfil">Perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/dashfaturacao/conta">Conta</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="wrapper">
+        <div id="sidebar" class="sidebar">
+            <div>
+                <div class="d-flex justify-content-between align-items-center p-3">
+                    <div id="workspace-section" class="d-flex align-items-center">
+                        <i class="fas fa-table me-2"></i>
+                        <span class="fw-bold">Faturação</span>
+                    </div>
+                    <button class="toggle-btn btn btn-sm text-white border-0 p-1" onclick="toggleSidebar()"
+                        title="Minimizar">
+                        <i id="toggle-icon" class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+
+                <div id="menu-items" class="mt-2">
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Visão Geral">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-tachometer-alt me-3" style="font-size: 20px;"></i>
+                            <span>Visão Geral</span>
+                        </div>
+                    </a>
+                    <a href="../painelprincipal.html" class="text-decoration-none text-white menu-item"
+                        data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-arrow-left me-3" style="font-size: 20px;"></i>
+                            <span>Voltar</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Voltar">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-clipboard-list me-3" style="font-size: 20px;"></i>
+                            <span>Facturas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item active" data-name="Tarefas">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-users me-3" style="font-size: 20px;"></i>
+                            <span>Pré - forma</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Equipa">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-comments me-3" style="font-size: 20px;"></i>
+                            <span>Guias</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Comunicações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file-alt me-3" style="font-size: 20px;"></i>
+                            <span>Encomendas</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Relatórios">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-file me-3" style="font-size: 20px;"></i>
+                            <span>Contactos</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Configurações">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Itens</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-chart-bar me-3" style="font-size: 20px;"></i>
+                            <span>Relatórios</span>
+                        </div>
+                    </a>
+                    <a href="#" class="text-decoration-none text-white menu-item" data-name="Permissões">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-cog me-3" style="font-size: 20px;"></i>
+                            <span>Configurações</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-auto mb-3">
+                    <a href="../../../../index.html" class="text-decoration-none text-white">
+                        <div class="d-flex align-items-center py-3 px-3">
+                            <i class="fas fa-sign-out-alt me-3" style="font-size: 20px;"></i>
+                            <span>Sair</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid p-4 bg-light">
+            <!-- Search Bar Section -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="bg-secondary bg-opacity-10 p-3 rounded">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 me-2">
+                                <input type="text" class="form-control"
+                                    placeholder="Pesquise pelos detalhes do documento, do cliente ou dos itens"
+                                    id="itemSearch" />
+                            </div>
+                            <div class="dropdown me-2">
+                                <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button"
+                                    id="advancedSearchDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Pesquisa avançada
+                                    <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="advancedSearchDropdown">
+                                    <li><a class="dropdown-item" href="#">Por data</a></li>
+                                    <li><a class="dropdown-item" href="#">Por cliente</a></li>
+                                    <li><a class="dropdown-item" href="#">Por valor</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary-custom text-white" type="button">
+                                Pesquisar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Controls -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div
+                        class="bg-secondary bg-opacity-10 p-2 rounded d-flex justify-content-between align-items-center">
+                        <button class="btn btn-link text-decoration-none text-secondary p-0" type="button">
+                            Seleccionar todos
+                        </button>
+                        <button class="btn btn-link text-decoration-none text-secondary p-0" type="button">
+                            Limpar selecção
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content with Table and Sidebar -->
+            <div class="row">
+                <!-- Table Section -->
+                <div class="col-lg-9 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="bg-white">
+                                    <tr>
+                                        <th class="py-3" width="20">
+                                            <input type="checkbox" class="form-check-input" />
+                                        </th>
+                                        <th class="py-3">Documento</th>
+                                        <th class="py-3">Número</th>
+                                        <th class="py-3">Cliente</th>
+                                        <th class="py-3">Data</th>
+                                        <th class="py-3">Vence</th>
+                                        <th class="py-3">S/Imposto/IVA</th>
+                                        <th class="py-3">PDF</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Sample Data Row 1 -->
+                                    <tr>
+                                        <td class="py-3">
+                                            <input type="checkbox" class="form-check-input" />
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="document-badge" style="background-color: #007bff;">
+                                                    F
+                                                </div>
+                                                Factura
+                                            </div>
+                                        </td>
+                                        <td class="py-3">2024/001</td>
+                                        <td class="py-3">Cliente A</td>
+                                        <td class="py-3">01/06/2025</td>
+                                        <td class="py-3" style="color: #f44336;">15/06/2025</td>
+                                        <td class="py-3">€1,500.00</td>
+                                        <td class="py-3">
+                                            <a href="#" class="text-success">
+                                                <i class="fas fa-file-text"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Data Row 2 -->
+                                    <tr>
+                                        <td class="py-3">
+                                            <input type="checkbox" class="form-check-input" />
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="document-badge" style="background-color: #28a745;">
+                                                    R
+                                                </div>
+                                                Recibo
+                                            </div>
+                                        </td>
+                                        <td class="py-3">2024/002</td>
+                                        <td class="py-3">Cliente B</td>
+                                        <td class="py-3">02/06/2025</td>
+                                        <td class="py-3" style="color: #f44336;">16/06/2025</td>
+                                        <td class="py-3">€2,300.00</td>
+                                        <td class="py-3">
+                                            <a href="#" class="text-success">
+                                                <i class="fas fa-file-text"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Data Row 3 -->
+                                    <tr>
+                                        <td class="py-3">
+                                            <input type="checkbox" class="form-check-input" />
+                                        </td>
+                                        <td class="py-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="document-badge" style="background-color: #ffc107;">
+                                                    N
+                                                </div>
+                                                Nota de Débito
+                                            </div>
+                                        </td>
+                                        <td class="py-3">2024/003</td>
+                                        <td class="py-3">Cliente C</td>
+                                        <td class="py-3">03/06/2025</td>
+                                        <td class="py-3" style="color: #f44336;">17/06/2025</td>
+                                        <td class="py-3">€850.00</td>
+                                        <td class="py-3">
+                                            <a href="#" class="text-success">
+                                                <i class="fas fa-file-text"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Action buttons below table -->
+                        <div class="bg-light p-2 d-flex justify-content-center align-items-center">
+                            <button class="btn btn-sm btn-light me-2" type="button">Arquivar</button>
+                            <button class="btn btn-sm btn-light me-2" type="button">Desarquivar</button>
+                            <button class="btn btn-sm btn-light me-2" type="button">Apagar</button>
+                            <button class="btn btn-sm btn-light" type="button">Download PDF</button>
+                        </div>
+
+                        <!-- Pagination section -->
+                        <div class="bg-light p-2 d-flex justify-content-center align-items-center">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination mb-0">
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">Primeira</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">Anterior</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">1</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link border-0 active-custom" href="#"
+                                            style="background-color: #00565a;">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">4</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">5</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">Próxima</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link border-0 text-dark" href="#">Última</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+                    <!-- New Invoice Button -->
+                    <a href="creatfatura.html">
+                        <button
+                            class="btn btn-primary-custom w-100 py-3 mb-3 text-white d-flex align-items-center justify-content-center"
+                            type="button">
+                            <i class="fas fa-plus me-2"></i>
+                            Nova factura
+                        </button>
+                    </a>
+
+                    <!-- Invoice Options -->
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button
+                            class="btn sidebar-btn list-group-item list-group-item-action p-3 d-flex align-items-center"
+                            type="button">
+                            <i class="fas fa-receipt me-2"></i>
+                            Nova factura-recibo
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button
+                            class="btn sidebar-btn list-group-item list-group-item-action p-3 d-flex align-items-center"
+                            type="button">
+                            <i class="fas fa-credit-card me-2"></i>
+                            Nova nota de débito
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button
+                            class="btn sidebar-btn list-group-item list-group-item-action p-3 d-flex align-items-center"
+                            type="button">
+                            <i class="fas fa-clock me-2"></i>
+                            Nova autofacturação
+                        </button>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <button
+                            class="btn sidebar-btn list-group-item list-group-item-action p-3 d-flex align-items-center"
+                            type="button">
+                            <i class="fas fa-file-check me-2"></i>
+                            Nova factura global
+                        </button>
+                    </div>
+
+                    <!-- Summary Box -->
+                    <div class="card border-0 shadow-sm mb-3">
+                        <div class="card-header bg-light border-0">
+                            <h6 class="mb-0 fw-bold">
+                                Sumário
+                                <span class="text-muted fw-normal">(297 documentos)</span>
+                            </h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <button class="btn btn-primary-custom w-100 py-3 text-center text-white" type="button">
+                                Calcular Sumário
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <link href="../../../public/assets/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link href="../../../public/assets/js/sidbar.js" rel="stylesheet">
+    <!-- Optional JavaScript for search functionality -->
+    <script>
+        // Simple search functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('itemSearch');
+            const tableRows = document.querySelectorAll('tbody tr');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
